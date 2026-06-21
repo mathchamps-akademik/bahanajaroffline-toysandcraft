@@ -1,0 +1,4 @@
+Versi compressed untuk GitHub web upload.
+
+Gunakan file worksheet-siswa-toys-craft.pdf di folder ini hanya jika file exact 45 MB gagal di-upload lewat GitHub web.
+Upload ke root repo dan replace file lama dengan nama yang sama.
