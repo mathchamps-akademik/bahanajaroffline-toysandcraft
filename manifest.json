@@ -1,0 +1,34 @@
+{
+  "title": "Math Champs Holiday Program - Offline Toys & Craft",
+  "meetings": 3,
+  "duration_minutes_each": 100,
+  "files": {
+    "hub": "index.html",
+    "teacher_decks": [
+      "pertemuan-1-teacher-deck.html",
+      "pertemuan-2-teacher-deck.html",
+      "pertemuan-3-teacher-deck.html"
+    ],
+    "deck_pdfs": [
+      "pertemuan-1-teacher-deck.pdf",
+      "pertemuan-2-teacher-deck.pdf",
+      "pertemuan-3-teacher-deck.pdf"
+    ],
+    "tests": [
+      "pre-test-1.pdf",
+      "pre-test-2.pdf",
+      "pre-test-3.pdf",
+      "post-test-1.pdf",
+      "post-test-2.pdf",
+      "post-test-3.pdf"
+    ],
+    "answer_keys": [
+      "kunci-jawaban-1.pdf",
+      "kunci-jawaban-2.pdf",
+      "kunci-jawaban-3.pdf"
+    ],
+    "learning_kit": "learning-kit-kartu-bahan-utama.pdf",
+    "spin_wheel": "spin-wheel-day1.html",
+    "worksheet": "worksheet-siswa-toys-craft.pdf"
+  }
+}

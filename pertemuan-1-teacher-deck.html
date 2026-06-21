@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toys &amp; Craft - Pertemuan 1</title>
+  <style>
+:root {
+  --ink: #12333d;
+  --muted: #49646b;
+  --teal: #0f7776;
+  --blue: #285f9e;
+  --sky: #a8def0;
+  --mint: #dcefd7;
+  --cream: #fff4bf;
+  --yellow: #ffd769;
+  --orange: #f6a34a;
+  --coral: #ef705f;
+  --purple: #7467d9;
+  --paper: #fffdf8;
+  --line: rgba(15, 119, 118, 0.32);
+  --shadow: 0 22px 46px rgba(18, 51, 61, 0.18);
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.92) 0 48px, transparent 49px),
+    radial-gradient(circle at 19% 16%, rgba(255, 255, 255, 0.78) 0 34px, transparent 35px),
+    radial-gradient(circle at 88% 20%, rgba(255, 255, 255, 0.75) 0 46px, transparent 47px),
+    linear-gradient(135deg, #fff4bf 0%, #dcefd7 42%, #a8def0 100%);
+  overflow: hidden;
+}
+button { font: inherit; }
+.deck-shell {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  place-items: center;
+  padding: 22px;
+}
+.stage {
+  width: min(calc(100vw - 44px), calc((100vh - 124px) * 16 / 9), 1600px);
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  background: var(--paper);
+}
+.slide {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 1600px;
+  height: 900px;
+  padding: 46px 58px 54px;
+  transform: scale(var(--deck-scale, 1));
+  transform-origin: top left;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 94% 14%, rgba(255, 255, 255, 0.86) 0 50px, transparent 51px),
+    radial-gradient(circle at 8% 84%, rgba(15, 119, 118, 0.18) 0 130px, transparent 131px),
+    linear-gradient(90deg, rgba(255,244,191,.75), rgba(220,239,215,.82) 42%, rgba(168,222,240,.9));
+}
+.slide.is-active { display: block; }
+.slide::before {
+  content: "";
+  position: absolute;
+  left: -44px;
+  top: 146px;
+  width: 170px;
+  height: 610px;
+  background: rgba(255, 215, 105, 0.45);
+  border: 5px solid rgba(18, 51, 61, 0.18);
+  transform: rotate(-8deg);
+  border-radius: 34px;
+  pointer-events: none;
+}
+.slide::after {
+  content: "";
+  position: absolute;
+  right: -56px;
+  bottom: -42px;
+  width: 240px;
+  height: 250px;
+  background:
+    linear-gradient(135deg, rgba(47, 159, 154, 0.72), rgba(40, 95, 158, 0.35));
+  border-radius: 70% 0 0 0;
+  pointer-events: none;
+}
+.slide > * { position: relative; z-index: 1; }
+.slide-art {
+  position: absolute;
+  z-index: 0;
+  right: 48px;
+  bottom: 44px;
+  width: 230px;
+  height: 160px;
+  pointer-events: none;
+  opacity: .22;
+}
+.slide-art img {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+  border: 4px solid rgba(18,51,61,.46);
+  border-radius: 18px;
+  background: rgba(231,243,255,.72);
+  box-shadow: 0 10px 0 rgba(18,51,61,.10);
+}
+.slide-art .paper { right: 0; top: 0; width: 138px; height: 98px; transform: rotate(8deg); }
+.slide-art .sticker { left: 0; top: 34px; width: 132px; height: 96px; transform: rotate(-8deg); }
+.slide-art .beads { right: 16px; bottom: 0; width: 132px; height: 92px; transform: rotate(-4deg); }
+.cover::before, .cover::after, .plain::before, .plain::after { display: none; }
+.cover .slide-art, .plain .slide-art { display: none; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2, h3 {
+  letter-spacing: 0;
+  color: #0a6f70;
+  text-shadow:
+    3px 0 #fffdf8, -3px 0 #fffdf8, 0 3px #fffdf8, 0 -3px #fffdf8,
+    3px 3px #fffdf8, -3px -3px #fffdf8, 3px -3px #fffdf8, -3px 3px #fffdf8,
+    0 8px 0 rgba(18,51,61,.10);
+}
+h1 { margin-bottom: 14px; font-size: 3.72rem; line-height: 1.03; }
+h2 { margin-bottom: 10px; font-size: 2rem; line-height: 1.13; }
+h3 { margin-bottom: 8px; font-size: 1.38rem; line-height: 1.14; color: #1d5c94; }
+p, li, td, th, .pill, .mini { font-size: 1.12rem; line-height: 1.38; }
+p, li, td { font-family: "Trebuchet MS", Arial, sans-serif; font-weight: 500; }
+.card p, .card li,
+.note p, .note li,
+.teacher-box p, .teacher-box li,
+.example-box p, .example-box li,
+.process .step p {
+  font-size: 1.34rem;
+  line-height: 1.38;
+}
+.example-box .mini,
+.card .mini,
+.note .mini {
+  font-size: 1.16rem;
+  line-height: 1.32;
+}
+.eyebrow {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  padding: 7px 15px;
+  border: 3px solid #fffdf8;
+  border-radius: 999px;
+  color: #fffdf8;
+  background: #f6a34a;
+  font-size: 1.02rem;
+  font-weight: 950;
+  text-transform: uppercase;
+  box-shadow: 0 6px 0 rgba(29,92,148,.24);
+}
+.lead {
+  max-width: 940px;
+  color: #193f47;
+  font-size: 1.42rem;
+  line-height: 1.36;
+  font-weight: 650;
+}
+.slide-header {
+  max-width: 1200px;
+  margin: 0 auto 26px;
+  text-align: center;
+}
+.slide-header .lead { margin-left: auto; margin-right: auto; }
+.cover-grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, .82fr);
+  gap: 34px;
+  align-items: center;
+}
+.cover-panel {
+  padding: 44px 50px;
+  border: 7px solid rgba(47, 159, 154, .54);
+  border-radius: 30px;
+  background: rgba(255,253,248,.96);
+  box-shadow: var(--shadow);
+}
+.cover-visual {
+  min-height: 560px;
+  display: grid;
+  place-items: center;
+  border: 6px solid rgba(255,255,255,.74);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 40% 22%, #ffd769 0 72px, transparent 73px),
+    radial-gradient(circle at 62% 52%, #ef705f 0 58px, transparent 59px),
+    radial-gradient(circle at 33% 65%, #7467d9 0 45px, transparent 46px),
+    linear-gradient(145deg, rgba(255,255,255,.68), rgba(168,222,240,.72));
+}
+.craft-stack {
+  width: 430px;
+  height: 430px;
+  position: relative;
+}
+.craft-stack img {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+  border: 5px solid #12333d;
+  border-radius: 24px;
+  background: #e7f3ff;
+  box-shadow: 0 14px 0 rgba(18,51,61,.13);
+}
+.craft-stack .paper { left: 142px; top: 26px; width: 250px; height: 190px; transform: rotate(8deg); }
+.craft-stack .bead { left: 162px; top: 204px; width: 250px; height: 175px; transform: rotate(-7deg); }
+.craft-stack .sticker { left: 8px; top: 132px; width: 250px; height: 185px; transform: rotate(-8deg); }
+.mission-row, .pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.pill {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 8px 15px;
+  border: 3px solid rgba(18,51,61,.16);
+  border-radius: 999px;
+  background: var(--yellow);
+  color: #12333d;
+  font-weight: 900;
+}
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; }
+.two.wide-left { grid-template-columns: 1.18fr .82fr; }
+.two.wide-right { grid-template-columns: .82fr 1.18fr; }
+.three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.four { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.card, .note, .worksheet-shot, .table-wrap, .teacher-box, .formula, .example-box {
+  border: 4px solid rgba(15,119,118,.28);
+  border-radius: 22px;
+  background: rgba(255,253,248,.95);
+  box-shadow: 0 10px 0 rgba(18,51,61,.08), 0 16px 28px rgba(18,51,61,.08);
+}
+.card, .note, .teacher-box, .formula, .example-box { padding: 20px 22px; }
+.card h3, .note h3, .formula h3, .example-box h3 { margin-bottom: 10px; }
+.card ul, .note ul, .teacher-box ul, .example-box ul { margin: 0; padding-left: 25px; }
+.card li, .note li, .teacher-box li, .example-box li { margin-bottom: 8px; }
+.card li:last-child, .note li:last-child, .teacher-box li:last-child, .example-box li:last-child { margin-bottom: 0; }
+.example-mini {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 3px dashed rgba(246,163,74,.68);
+  border-radius: 16px;
+  background: #fff8d6;
+}
+.example-mini h3 {
+  margin-bottom: 6px;
+  color: #9c4f13;
+  font-size: 1.28rem;
+}
+.example-mini p {
+  margin-bottom: 0;
+  font-size: 1.24rem;
+  line-height: 1.32;
+}
+.note { background: rgba(255, 248, 214, .96); border-color: rgba(246,163,74,.62); }
+.teacher-box { background: #f4f9ff; border-color: rgba(40,95,158,.42); }
+.teacher-box h2, .teacher-box h3 { color: #1d5c94; }
+.warning { background: #fff0ec; border-color: rgba(239,112,95,.5); }
+.formula {
+  display: grid;
+  min-height: 150px;
+  align-content: center;
+  text-align: center;
+  background: #eaf8f7;
+  border-color: rgba(47,159,154,.55);
+}
+.formula strong {
+  display: block;
+  color: #0a6f70;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+.asset-mini {
+  width: 100%;
+  height: 132px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 8px;
+  border: 3px solid rgba(18,51,61,.14);
+  border-radius: 16px;
+  background: #e7f3ff;
+}
+.label-demo-wrap {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.label-demo-card {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+.label-demo-card h2 { margin-bottom: 0; font-size: 1.42rem; line-height: 1.14; }
+.bracelet-frame {
+  min-height: 0;
+  height: 310px;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  border: 3px solid rgba(18,51,61,.14);
+  border-radius: 18px;
+  background: #eef9ff;
+}
+.bracelet-frame img {
+  max-width: 82%;
+  max-height: 300px;
+  width: auto;
+  height: 300px;
+  object-fit: contain;
+  display: block;
+}
+.product-mock {
+  min-height: 360px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  border: 4px solid rgba(40,95,158,.30);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255,215,105,.55), transparent 22%),
+    linear-gradient(145deg, #f8fdff, #dff4ff);
+  overflow: hidden;
+}
+.product-mock::before {
+  content: "";
+  position: absolute;
+  inset: 40px 76px 42px;
+  border: 5px solid rgba(18,51,61,.22);
+  border-radius: 28px;
+  background: rgba(255,255,255,.55);
+}
+.product-mock img {
+  position: relative;
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+  z-index: 1;
+}
+.bracelet-asset, .display-asset {
+  width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  display: block;
+  margin: 4px auto 0;
+}
+.display-asset { max-height: 360px; }
+.product-label {
+  position: absolute;
+  left: 90px;
+  right: 90px;
+  bottom: 56px;
+  z-index: 2;
+  padding: 12px 14px;
+  border: 4px solid #12333d;
+  border-radius: 18px;
+  background: #fff8d6;
+  text-align: center;
+  box-shadow: 0 8px 0 rgba(18,51,61,.12);
+}
+.product-label strong { display: block; color: #0a6f70; font-size: 1.28rem; }
+.product-label span { display: block; font-size: 1rem; line-height: 1.22; font-weight: 700; }
+.price-tag {
+  position: absolute;
+  right: 70px;
+  top: 50px;
+  z-index: 3;
+  padding: 10px 14px;
+  border: 4px solid #12333d;
+  border-radius: 14px;
+  background: #ffd769;
+  color: #592a08;
+  font-size: 1.34rem;
+  font-weight: 950;
+  transform: rotate(7deg);
+}
+.worksheet-shot {
+  overflow: hidden;
+  padding: 10px;
+  background: #fff;
+}
+.worksheet-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 610px;
+  object-fit: contain;
+  border-radius: 15px;
+}
+.table-wrap { overflow: hidden; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,253,248,.96);
+}
+th, td {
+  padding: 12px 14px;
+  border-bottom: 2px solid rgba(15,119,118,.18);
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  color: #0a6f70;
+  background: rgba(220,239,215,.86);
+  font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
+  font-weight: 950;
+}
+td:first-child, th:first-child { white-space: nowrap; }
+.rundown th:nth-child(1) { width: 120px; }
+.rundown th:nth-child(2) { width: 360px; }
+.rundown th:nth-child(3) { width: auto; }
+.rundown th:nth-child(4) { width: 280px; }
+.split-list {
+  display: grid;
+  gap: 12px;
+}
+.big-number {
+  display: inline-grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  margin-right: 10px;
+  border-radius: 16px;
+  color: #fffdf8;
+  background: #1d5c94;
+  font-size: 1.5rem;
+  font-weight: 950;
+}
+.process {
+  display: grid;
+  gap: 14px;
+}
+.process .step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255,253,248,.92);
+  border: 3px solid rgba(15,119,118,.22);
+}
+.step p { margin-bottom: 0; }
+.mini { color: var(--muted); font-weight: 500; }
+.center { text-align: center; }
+.student-fill {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+.fill-row {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+  align-items: stretch;
+  min-height: 190px;
+  padding: 20px 22px;
+  border: 3px dashed rgba(40,95,158,.38);
+  border-radius: 24px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 8px 0 rgba(18,51,61,.08);
+}
+.fill-row span:first-child { color: #1d5c94; font-weight: 950; font-size: 1.42rem; }
+.fill-row.wide { grid-column: span 2; }
+.line {
+  min-height: 78px;
+  border-bottom: 3px solid rgba(18,51,61,.36);
+}
+.share-example {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 16px;
+  padding: 14px 18px;
+  border: 4px solid rgba(246,163,74,.55);
+  border-radius: 20px;
+  background: #fff8d6;
+}
+.share-example strong { color: #9c4f13; font-size: 1.22rem; }
+.share-example p { margin-bottom: 0; font-size: 1.24rem; line-height: 1.32; }
+.teacher-script {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+.teacher-script p {
+  margin: 0;
+  padding: 12px 15px;
+  border-left: 8px solid #f6a34a;
+  border-radius: 12px;
+  background: rgba(255,253,248,.9);
+}
+.cpa-box {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.cpa-item {
+  padding: 14px;
+  border: 3px solid rgba(40,95,158,.28);
+  border-radius: 16px;
+  background: rgba(255,253,248,.92);
+}
+.cpa-item strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #1d5c94;
+  font-size: 1.2rem;
+}
+.cpa-item p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.28;
+}
+.photo-template {
+  display: grid;
+  grid-template-columns: .95fr 1.05fr;
+  gap: 22px;
+  align-items: stretch;
+}
+.photo-frame {
+  min-height: 360px;
+  display: grid;
+  place-items: center;
+  border: 6px dashed rgba(40,95,158,.42);
+  border-radius: 28px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.88), rgba(223,244,255,.92));
+  overflow: hidden;
+}
+.photo-frame img {
+  width: 88%;
+  max-height: 330px;
+  object-fit: contain;
+}
+.photo-caption {
+  padding: 22px;
+  border: 4px solid rgba(246,163,74,.58);
+  border-radius: 24px;
+  background: #fff8d6;
+}
+.photo-caption h2 { color: #9c4f13; }
+.photo-caption p { font-size: 1.32rem; line-height: 1.36; }
+.footer-bar {
+  width: min(calc(100vw - 44px), 1600px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+.controls, .mini-actions { display: flex; align-items: center; gap: 8px; }
+.icon-button {
+  min-width: 44px;
+  min-height: 42px;
+  display: inline-grid;
+  place-items: center;
+  padding: 8px 12px;
+  border: 3px solid rgba(15,119,118,.35);
+  border-radius: 999px;
+  color: #082f35;
+  background: #fffdf8;
+  font-weight: 950;
+  cursor: pointer;
+  box-shadow: 0 6px 0 rgba(18,51,61,.12);
+}
+.slide-meter {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,253,248,.92);
+  border: 3px solid rgba(15,119,118,.28);
+  font-weight: 950;
+}
+.notes-panel, .overview {
+  position: fixed;
+  z-index: 10;
+  right: 22px;
+  bottom: 78px;
+  width: min(520px, calc(100vw - 44px));
+  max-height: min(620px, calc(100vh - 120px));
+  overflow: auto;
+  border: 4px solid rgba(40,95,158,.38);
+  border-radius: 22px;
+  background: #fffdf8;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+.notes-panel[hidden], .overview[hidden] { display: none; }
+.notes-panel h2, .overview h2 { margin-bottom: 10px; font-size: 1.45rem; }
+.notes-panel p, .notes-panel li { font-size: 1rem; line-height: 1.36; }
+.speaker-note { display: none; }
+.overview-list { display: grid; gap: 8px; }
+.overview-list button {
+  padding: 9px 10px;
+  border: 2px solid rgba(15,119,118,.24);
+  border-radius: 12px;
+  text-align: left;
+  background: rgba(220,239,215,.42);
+  color: var(--ink);
+  cursor: pointer;
+}
+@media print {
+  body { background: #fff; overflow: visible; }
+  .deck-shell { display: block; padding: 0; }
+  .stage { width: auto; height: auto; aspect-ratio: auto; overflow: visible; box-shadow: none; border-radius: 0; }
+  .slide {
+    display: block !important;
+    position: relative;
+    inset: auto;
+    transform: none !important;
+    page-break-after: always;
+    break-after: page;
+    width: 1600px;
+    height: 900px;
+    border-radius: 0;
+  }
+  .footer-bar, .notes-panel, .overview { display: none !important; }
+  @page { size: 1600px 900px; margin: 0; }
+}
+</style>
+</head>
+<body>
+  <main class="deck-shell">
+    <section class="stage">
+      <article class="slide is-active cover plain" data-title="Pertemuan 1">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="cover-grid">
+          <div class="cover-panel">
+            <p class="eyebrow">Holiday Program Mathpreneur</p>
+            <h1>Pertemuan 1:<br>Learn &amp; Ideation</h1>
+            <p class="lead">Hari ini siswa memilih bahan utama, menemukan ide produk kreatif, lalu membuat brand awal.</p>
+            <div class="mission-row"><span>Blind Box</span><span>Product Explorer</span><span>Customer Detective</span><span>Brand Creator</span></div>
+          </div>
+          <div class="cover-visual">
+            <div class="craft-stack" aria-hidden="true">
+              <img class="paper" src="assets/icon-paper.png" alt="">
+              <img class="bead" src="assets/icon-beads.png" alt="">
+              <img class="sticker" src="assets/icon-sticker.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">
+        <p>Slide ini boleh ditampilkan ke siswa. Tekankan bahwa tema kali ini bukan makanan, tetapi produk kreatif yang bisa dibuat dari bahan sederhana.</p>
+        <p>Gunakan kata "Mathpreneur" sebagai jembatan: siswa belajar membuat produk sekaligus memakai matematika untuk mengambil keputusan.</p>
+        </div></article><article class="slide" data-title="Catatan Guru P1">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Slide khusus guru</p><h1>Catatan Guru Sebelum Kelas</h1><p class="lead">Slide ini untuk guru. Tidak perlu ditampilkan ke siswa saat presentasi kelas.</p></div>
+        <div class="two">
+          <div class="teacher-box">
+            <h2>Checklist Utama</h2>
+            <ul><li>Print worksheet siswa dan test sebelum kelas.</li><li>Print kartu blind box dari learning kit. 1 halaman berisi 12 kartu bahan utama.</li><li>Siapkan gunting untuk guru saja saat memotong kartu bahan utama.</li><li>Siapkan contoh produk sederhana: stiker nama, gelang beads, bookmark kertas warna.</li><li>Siswa perlu alat tulis, pensil warna/spidol warna, dan penghapus.</li></ul>
+          </div>
+          <div class="teacher-box warning">
+            <h2>Fokus Fasilitasi</h2>
+            <ul>
+              <li>Jaga bahasa tetap sederhana: produk, pembeli, modal, harga, untung.</li>
+              <li>Untuk siswa yang bingung, berikan 2 pilihan konkret lalu minta mereka memilih.</li>
+              <li>Untuk kegiatan craft, ingatkan keamanan alat: gunting, lem, dan manik-manik kecil.</li>
+              <li>Tujuan kelas bukan produk sempurna, tetapi siswa bisa menjelaskan proses berpikirnya.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="speaker-note">
+        <p>Gunakan slide ini saat briefing guru atau sebelum siswa masuk. Setelah kelas dimulai, guru dapat langsung lompat ke slide cover atau rundown.</p>
+        </div></article><article class="slide" data-title="Rundown Pertemuan 1">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Pertemuan 1 - 100 menit</p><h1>Rundown Pertemuan 1</h1><p class="lead">Panduan waktu fleksibel. Jika diskusi siswa ramai, pangkas sharing dan lanjutkan worksheet inti.</p></div>
+        <div class="table-wrap">
+          <table class="rundown">
+            <thead><tr><th>Durasi</th><th>Aktivitas</th><th>Yang dilakukan siswa</th><th>Hasil akhir</th></tr></thead>
+            <tbody><tr><td>10 mnt</td><td>Opening</td><td>Kenalan singkat dan aturan kelas</td><td>Siswa siap belajar</td></tr><tr><td>10 mnt</td><td>Pre Test 1</td><td>Mengerjakan 5 soal pilihan ganda</td><td>Pemahaman awal terlihat</td></tr><tr><td>10 mnt</td><td>Mathpreneur</td><td>Mengenal bisnis mini Toys & Craft</td><td>Paham produk, pembeli, harga</td></tr><tr><td>10 mnt</td><td>Blind Box</td><td>Ambil kartu bahan utama</td><td>Stiker / beads / kertas warna</td></tr><tr><td>20 mnt</td><td>Worksheet 1</td><td>Mencari 3-5 ide produk kreatif</td><td>1 ide produk terpilih</td></tr><tr><td>15 mnt</td><td>Worksheet 2</td><td>Mengenal target pembeli</td><td>Target pembeli dan alasan</td></tr><tr><td>15 mnt</td><td>Worksheet 3</td><td>Membuat nama brand, logo, slogan</td><td>Identitas brand awal</td></tr><tr><td>5 mnt</td><td>Post Test 1</td><td>Mengerjakan 5 soal</td><td>Pemahaman akhir terlihat</td></tr><tr><td>5 mnt</td><td>Closing</td><td>Arahan tugas rumah</td><td>Diskusi rumah siap dilakukan</td></tr></tbody>
+          </table>
+        </div>
+        <div class="speaker-note">
+        <p>Durasi dibuat kelipatan 5 menit agar mudah dipakai di kelas. Pakai timer visual jika tersedia.</p>
+        <p>Jika kelas lebih cepat, tambahkan sesi contoh atau roleplay. Jika kelas lebih lambat, prioritaskan worksheet inti dan tugas rumah.</p>
+        </div></article><article class="slide" data-title="Tujuan Pertemuan 1">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Pertemuan 1</p><h1>Tujuan Belajar Hari Ini</h1><p class="lead">Di akhir kelas, siswa punya output yang bisa dilanjutkan ke pertemuan berikutnya.</p></div>
+        <div class="two">
+          <div class="card">
+            <h2>Siswa Bisa...</h2>
+            <ul><li>Menjelaskan arti produk, pembeli, brand, logo, dan harga awal.</li><li>Memilih bahan utama dari blind box.</li><li>Membuat beberapa ide produk kreatif yang aman dan mungkin dibuat.</li><li>Memilih 1 ide produk terbaik untuk dilanjutkan.</li><li>Membuat nama brand, logo, slogan, dan target pembeli.</li></ul>
+          </div>
+          <div class="note">
+            <h2>Matematika yang Dipakai</h2>
+            <ul><li>Mengelompokkan ide berdasarkan bahan utama.</li><li>Membandingkan pilihan: mana yang paling mudah, menarik, dan masuk akal.</li><li>Membuat estimasi harga awal dengan angka sederhana.</li><li>Membaca hasil pilihan teman sebagai data sederhana.</li></ul>
+          </div>
+        </div>
+        <div class="speaker-note">
+        <p>Guru tidak perlu memakai istilah matematika yang terlalu formal. Sebutkan konsepnya lewat kegiatan: menghitung, membandingkan, membagi rata, dan menentukan selisih.</p>
+        </div></article><article class="slide" data-title="Pre Test 1">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Pre Test 1</p><h1>Pre Test 1: Cek Pemahaman</h1><p class="lead">Waktu pengerjaan 10 menit. Kerjakan sendiri dulu, lalu guru kumpulkan hasilnya.</p></div>
+        <div class="two">
+          <div class="card">
+            <h2>Arahan untuk Siswa</h2>
+            <ul>
+              <li>Baca soal dengan pelan.</li>
+              <li>Pilih satu jawaban yang paling tepat.</li>
+              <li>Jika belum tahu, pilih jawaban yang menurutmu paling masuk akal.</li>
+              <li>Tidak perlu takut salah. Ini untuk melihat pemahaman awal dan akhir.</li>
+            </ul>
+          </div>
+          <div class="teacher-box">
+            <h2>Catatan Guru</h2>
+            <ul>
+              <li>Pastikan semua siswa mendapat lembar test.</li>
+              <li>Untuk siswa yang belum lancar membaca, bantu bacakan soal tanpa mengarahkan jawabannya.</li>
+              <li>Setelah selesai, simpan hasil test sesuai prosedur cabang.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="speaker-note">
+        <p>Untuk kelas offline, test dapat diprint dari file PDF pada hub. Guru boleh membacakan instruksi, tetapi tidak memberi petunjuk jawaban.</p>
+        </div></article><article class="slide" data-title="Apa Itu Mathpreneur">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Konsep hari ini</p><h1>Apa Itu Mathpreneur?</h1><p class="lead">Mathpreneur berarti kita memakai matematika untuk merancang produk dan mengambil keputusan bisnis kecil.</p></div>
+            <div class="three">
+              <div class="card"><h2>Produk</h2><p>Benda yang kita buat dan bisa ditawarkan ke orang lain.</p><p class="mini">Contoh: stiker nama, gelang beads, kartu ucapan.</p></div>
+              <div class="card"><h2>Pembeli</h2><p>Orang yang mungkin tertarik dengan produk kita.</p><p class="mini">Contoh: teman kelas, adik, kakak, orang tua.</p></div>
+              <div class="card"><h2>Harga</h2><p>Jumlah uang yang dibayar pembeli untuk mendapatkan produk.</p><p class="mini">Harga perlu masuk akal dan nanti dicek lagi dengan modal.</p></div>
+            </div>
+            <div class="note" style="margin-top:18px;"><h2>Kalimat Mudah untuk Siswa</h2><p>"Kita akan belajar membuat produk kreatif, memikirkan siapa yang mau membeli, lalu memakai matematika untuk menentukan harga."</p></div>
+            <div class="speaker-note">
+            <p>Hindari menjelaskan bisnis terlalu luas. Cukup kaitkan ke pengalaman sehari-hari: membeli stiker, gelang, kartu, atau hiasan di toko.</p>
+            </div></article><article class="slide" data-title="Contoh Produk Toys &amp; Craft">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Inspirasi awal</p><h1>Dari Bahan Sederhana Jadi Produk Siap Jual</h1><p class="lead">Bahan yang terlihat biasa bisa berubah menjadi produk yang punya fungsi dan cerita.</p></div>
+            <div class="three">
+              <div class="card"><img class="asset-mini" src="assets/icon-sticker.png" alt="Stiker"><h2>Stiker</h2><ul><li>Stiker nama untuk buku</li><li>Stiker karakter lucu</li><li>Stiker label botol minum</li></ul></div>
+              <div class="card"><img class="asset-mini" src="assets/icon-beads.png" alt="Manik-manik"><h2>Manik-Manik</h2><ul><li>Gelang persahabatan</li><li>Gantungan tas</li><li>Strap masker atau strap HP</li></ul></div>
+              <div class="card"><img class="asset-mini" src="assets/icon-paper.png" alt="Kertas warna"><h2>Kertas Warna</h2><ul><li>Bookmark</li><li>Kartu ucapan</li><li>Hiasan meja kecil</li></ul></div>
+            </div>
+            <div class="note" style="margin-top:18px;"><h2>Tips Ide Produk</h2><p>Pilih produk yang aman, mudah dibuat, tidak terlalu mahal, dan bisa dijelaskan dengan singkat.</p></div>
+            <div class="speaker-note">
+            <p>Minta siswa memberi contoh lain. Jika ide terlalu rumit, bantu kecilkan skalanya: dari "mainan besar" menjadi "gantungan kecil" atau "mini kit".</p>
+            </div></article><article class="slide" data-title="Blind Box">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Menu Idea Hunt</p><h1>Buka Blind Box Bahan Utama</h1><p class="lead">Setiap siswa mengambil 1 kartu bahan utama: stiker, manik-manik/beads, atau kertas warna.</p></div>
+            <div class="two">
+              <div class="process">
+                <div class="step"><span class="big-number">1</span><p>Guru mengocok kartu bahan utama yang sudah digunting.</p></div>
+                <div class="step"><span class="big-number">2</span><p>Siswa mengambil 1 kartu tanpa melihat isi kartu.</p></div>
+                <div class="step"><span class="big-number">3</span><p>Siswa menulis bahan utama yang didapat di Worksheet 1.</p></div>
+                <div class="step"><span class="big-number">4</span><p>Jika bahan terasa sulit, guru bantu memberi contoh produk sederhana.</p></div>
+              </div>
+              <div class="note">
+                <h2>Aturan Kelas</h2>
+                <ul>
+                  <li>Tidak saling menukar kartu dulu.</li>
+                  <li>Semua bahan punya peluang jadi produk keren.</li>
+                  <li>Ide boleh sederhana, yang penting bisa dibuat dan dijelaskan.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="speaker-note">
+            <p>Jika jumlah siswa banyak, lakukan per meja/kelompok. Untuk kelas yang waktunya sempit, gunakan spin wheel cadangan dari hub.</p>
+            </div></article><article class="slide" data-title="Worksheet 1">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Worksheet 1</p><h1>Product Explorer</h1><p class="lead">Siswa mencari beberapa ide produk dari bahan utama yang didapat.</p></div>
+        <div class="two wide-left">
+          <div class="worksheet-shot"><img src="assets/worksheet-1-product-explorer.png" alt="Product Explorer"></div>
+          <div class="card">
+            <h2>Langkah Mengerjakan</h2>
+            <ul><li>Tulis bahan utama dari blind box.</li><li>Buat 3-5 ide produk yang mungkin dibuat.</li><li>Pilih 1 ide terbaik.</li><li>Gunakan 3 pertanyaan: mudah dibuat? aman? menarik untuk pembeli?</li></ul>
+            <div class="example-mini"><h3>Contoh</h3>
+            <p><strong>Bahan:</strong> Kertas warna</p>
+            <p><strong>Ide:</strong> bookmark hewan, kartu ucapan, hiasan meja kecil.</p>
+            <p><strong>Pilihan terbaik:</strong> bookmark hewan, karena mudah dibuat dan bisa dipakai teman sekolah.</p>
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">
+            <p>Contoh untuk guru: jika siswa mendapat kertas warna, ide bisa berupa bookmark, kartu ucapan, atau hiasan meja. Bantu siswa memilih yang paling realistis dibuat di rumah.</p>
+            </div></article><article class="slide" data-title="Matematika Skor Ide">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Matematika Mini</p><h1>Pakai Skor untuk Memilih Ide Terbaik</h1><p class="lead">Kalau punya banyak ide, kita bisa memberi skor sederhana agar pilihan lebih jelas.</p></div>
+            <div class="two wide-left">
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Ide Produk</th><th>Mudah dibuat</th><th>Menarik</th><th>Aman</th><th>Total</th></tr></thead>
+                  <tbody>
+                    <tr><td>Bookmark kertas</td><td>3</td><td>2</td><td>3</td><td>8</td></tr>
+                    <tr><td>Mini rumah kertas</td><td>1</td><td>3</td><td>2</td><td>6</td></tr>
+                    <tr><td>Kartu ucapan</td><td>3</td><td>3</td><td>3</td><td>9</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="formula">
+                <h3>Trik Cepat</h3>
+                <strong>Skor 1 sampai 3</strong>
+                <p>1 = kurang cocok, 2 = cukup, 3 = sangat cocok</p>
+              </div>
+            </div>
+            <div class="speaker-note">
+            <p>Ini bukan bagian wajib di worksheet, tetapi sangat membantu siswa yang bingung memilih. Ajarkan sebagai cara berpikir, bukan sebagai nilai akademik.</p>
+            </div></article><article class="slide" data-title="Worksheet 2">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Worksheet 2</p><h1>Customer Detective</h1><p class="lead">Siswa menentukan siapa pembeli yang cocok untuk produk mereka.</p></div>
+        <div class="two wide-left">
+          <div class="worksheet-shot"><img src="assets/worksheet-2-customer-detective.png" alt="Customer Detective"></div>
+          <div class="card">
+            <h2>Langkah Mengerjakan</h2>
+            <ul><li>Pilih target pembeli: teman, adik/kakak, orang tua, atau lainnya.</li><li>Tulis alasan mengapa mereka mungkin suka produkmu.</li><li>Tanya 3 teman: produk seperti apa yang mereka suka?</li><li>Gunakan jawaban teman sebagai data sederhana.</li></ul>
+            <div class="example-mini"><h3>Contoh</h3>
+            <p><strong>Pertanyaan:</strong> "Kamu lebih suka warna pastel, cerah, atau gelap?"</p>
+            <p><strong>Hasil:</strong> 5 teman memilih warna cerah. Maka desain bisa dibuat lebih cerah.</p>
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">
+            <p>Contoh pertanyaan siswa ke teman: "Kamu lebih suka produk yang lucu, warna-warni, atau bisa dipakai sehari-hari?" Hindari kata yang terlalu abstrak.</p>
+            </div></article><article class="slide" data-title="Survei Mini">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Matematika Mini</p><h1>Survei Mini: Mana yang Paling Banyak?</h1><p class="lead">Jawaban teman bisa dihitung untuk membantu memilih desain produk.</p></div>
+            <div class="two">
+              <div class="card">
+                <h2>Contoh Hasil Tanya Teman</h2>
+                <ul>
+                  <li>Lucu: 6 teman</li>
+                  <li>Warna-warni: 4 teman</li>
+                  <li>Bisa dipakai sehari-hari: 3 teman</li>
+                </ul>
+              </div>
+              <div class="formula">
+                <h3>Kesimpulan</h3>
+                <strong>Lucu paling banyak dipilih</strong>
+                <p>Maka desain bisa dibuat lebih lucu dan ceria.</p>
+              </div>
+            </div>
+            <div class="note" style="margin-top:18px;"><h2>Tips</h2><p>Data kecil tidak harus sempurna. Yang penting siswa belajar bertanya, mencatat, dan membaca pilihan terbanyak.</p></div>
+            <div class="speaker-note">
+            <p>Guru dapat menulis hasil voting di papan. Gunakan turus jika siswa sudah familiar, atau langsung angka biasa jika lebih mudah.</p>
+            </div></article><article class="slide" data-title="Worksheet 3">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Worksheet 3</p><h1>Brand Creator</h1><p class="lead">Siswa membuat nama brand, logo, slogan, dan harga jual awal.</p></div>
+        <div class="two wide-left">
+          <div class="worksheet-shot"><img src="assets/worksheet-3-brand-creator.png" alt="Brand Creator"></div>
+          <div class="card">
+            <h2>Langkah Mengerjakan</h2>
+            <ul><li>Nama brand sebaiknya pendek dan mudah disebut.</li><li>Logo sebaiknya sederhana, jelas, dan sesuai produk.</li><li>Slogan berisi janji singkat produk.</li><li>Harga jual awal boleh berupa perkiraan. Nanti dicek lagi di Pertemuan 2.</li></ul>
+            <div class="example-mini"><h3>Contoh</h3>
+            <p><strong>Nama brand:</strong> Sticker Joy</p>
+            <p><strong>Logo:</strong> bintang kecil + stiker bebek.</p>
+            <p><strong>Slogan:</strong> "Tempel lucu, harimu seru!"</p>
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">
+            <p>Jika siswa ingin memakai AI di rumah, arahkan dengan aman: minta bantuan orang tua/wali. Di kelas offline, guru bisa memberi contoh prompt tanpa mewajibkan siswa membuka perangkat.</p>
+            </div></article><article class="slide" data-title="Tips Logo">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Brand Creator</p><h1>Tips Membuat Logo yang Mudah Diingat</h1><p class="lead">Logo bukan harus rumit. Logo yang bagus justru mudah dikenali.</p></div>
+            <div class="two">
+              <div class="card">
+                <h2>3 Aturan Logo</h2>
+                <ul>
+                  <li>Pakai 1 gambar utama, misalnya bintang, hati, gelang, atau kertas.</li>
+                  <li>Pilih 2-3 warna saja agar tidak terlalu ramai.</li>
+                  <li>Tulis nama brand dengan huruf yang mudah dibaca.</li>
+                </ul>
+              </div>
+              <div class="example-box">
+                <h2>Contoh</h2>
+                <p><strong>Nama brand:</strong> Bead Buddy</p>
+                <p><strong>Logo:</strong> gelang kecil berbentuk lingkaran dengan 3 warna.</p>
+                <p><strong>Slogan:</strong> "Bikin gayamu makin ceria!"</p>
+                <p class="mini">Alasannya: sesuai produk beads, mudah dibaca, dan terasa ramah untuk anak-anak.</p>
+              </div>
+            </div>
+            <div class="speaker-note">
+            <p>Untuk siswa yang terlalu lama menggambar, beri batas: sketsa logo 5 menit. Logo bisa diperbaiki di rumah.</p>
+            </div></article><article class="slide" data-title="Harga Awal">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Matematika Mini</p><h1>Harga Jual Awal Masih Boleh Berubah</h1><p class="lead">Hari ini siswa menebak harga yang masuk akal. Pertemuan 2 baru menghitung modal.</p></div>
+            <div class="three">
+              <div class="card"><h2>Terlalu Murah</h2><p>Kalau harga terlalu murah, modal bisa tidak tertutup.</p></div>
+              <div class="card"><h2>Terlalu Mahal</h2><p>Kalau harga terlalu mahal, pembeli bisa ragu.</p></div>
+              <div class="card"><h2>Masuk Akal</h2><p>Harga sesuai ukuran produk, bahan, dan usaha membuatnya.</p></div>
+            </div>
+            <div class="formula" style="margin-top:18px;"><strong>Harga awal = perkiraan pertama</strong><p>Nanti dicek lagi setelah tahu modal.</p></div>
+            <div class="speaker-note">
+            <p>Jangan koreksi harga siswa terlalu keras. Cukup tanya: "Kalau kamu jadi pembeli, harga ini terasa masuk akal tidak?"</p>
+            </div></article><article class="slide" data-title="Sharing Ide">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Sharing Cepat</p><h1>Ceritakan Ide Produkmu</h1><p class="lead">Pilih beberapa siswa sesuai waktu. Siswa lain mendengarkan dan memberi apresiasi.</p></div>
+            <div class="student-fill">
+              <div class="fill-row"><span>Bahan utamaku</span><div class="line"></div></div>
+              <div class="fill-row"><span>Ide produkku</span><div class="line"></div></div>
+              <div class="fill-row"><span>Target pembeli</span><div class="line"></div></div>
+              <div class="fill-row"><span>Nama brand</span><div class="line"></div></div>
+              <div class="fill-row"><span>Harga awal</span><div class="line"></div></div>
+              <div class="fill-row"><span>Alasan memilih ide</span><div class="line"></div></div>
+            </div>
+            <div class="share-example">
+              <strong>Contoh:</strong>
+              <p>"Bahan utamaku manik-manik. Ide produkku gelang warna-warni. Target pembelinya teman sekolah. Brand-ku Bead Buddy, harga awal Rp6.000."</p>
+            </div>
+            <div class="speaker-note">
+            <p>Aktivitas ini adalah presentasi hasil Worksheet 3. Pilih 3-5 siswa jika waktu terbatas. Gunakan kalimat pancingan: "Apa alasan kamu memilih ide itu?"</p>
+            </div></article><article class="slide" data-title="Post Test 1">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Post Test 1</p><h1>Post Test 1: Cek Pemahaman</h1><p class="lead">Waktu pengerjaan 5 menit. Kerjakan sendiri dulu, lalu guru kumpulkan hasilnya.</p></div>
+        <div class="two">
+          <div class="card">
+            <h2>Arahan untuk Siswa</h2>
+            <ul>
+              <li>Baca soal dengan pelan.</li>
+              <li>Pilih satu jawaban yang paling tepat.</li>
+              <li>Jika belum tahu, pilih jawaban yang menurutmu paling masuk akal.</li>
+              <li>Tidak perlu takut salah. Ini untuk melihat pemahaman awal dan akhir.</li>
+            </ul>
+          </div>
+          <div class="teacher-box">
+            <h2>Catatan Guru</h2>
+            <ul>
+              <li>Pastikan semua siswa mendapat lembar test.</li>
+              <li>Untuk siswa yang belum lancar membaca, bantu bacakan soal tanpa mengarahkan jawabannya.</li>
+              <li>Setelah selesai, simpan hasil test sesuai prosedur cabang.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="speaker-note">
+        <p>Untuk kelas offline, test dapat diprint dari file PDF pada hub. Guru boleh membacakan instruksi, tetapi tidak memberi petunjuk jawaban.</p>
+        </div></article><article class="slide" data-title="Worksheet 0">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Worksheet 0</p><h1>Tugas di Rumah: Diskusi dengan Orang Tua/Wali</h1><p class="lead">Siswa mengecek apakah bahan dan alat mudah dicari, aman, dan tidak memberatkan.</p></div>
+        <div class="two wide-left">
+          <div class="worksheet-shot"><img src="assets/pr-diskusi-rumah.png" alt="Tugas di Rumah: Diskusi dengan Orang Tua/Wali"></div>
+          <div class="card">
+            <h2>Langkah Mengerjakan</h2>
+            <ul><li>Diskusikan ide produk dengan orang tua/wali.</li><li>Tulis bahan dan alat yang ada di rumah.</li><li>Tulis bahan dan alat yang perlu dibeli.</li><li>Perkirakan harga bahan dengan angka sederhana.</li><li>Bawa hasil diskusi ke Pertemuan 2.</li></ul>
+            
+          </div>
+        </div>
+        <div class="speaker-note">
+            <p>Tekankan bahwa tugas rumah bukan meminta siswa langsung membuat produk. Pertemuan 1 fokus mengecek ide dan bahan dengan keluarga.</p>
+            </div></article><article class="slide" data-title="Closing">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Closing</p><h1>Hari Ini Kamu Sudah Punya Ide Produk!</h1><p class="lead">Pertemuan berikutnya, kita akan menghitung modal dan menentukan harga jual final.</p></div>
+            <div class="three">
+              <div class="card"><h2>1 Ide Produk</h2><p>Siswa memilih produk kreatif yang ingin dibuat.</p></div>
+              <div class="card"><h2>Target Pembeli</h2><p>Siswa tahu untuk siapa produk dibuat.</p></div>
+              <div class="card"><h2>Brand Awal</h2><p>Siswa punya nama brand, logo, dan slogan.</p></div>
+            </div>
+            <div class="speaker-note">
+            <p>Pastikan siswa membawa pulang worksheet dan paham tugas rumah. Minta mereka menyimpan worksheet dengan rapi karena akan dipakai lagi di Pertemuan 2.</p>
+            </div></article><article class="slide" data-title="Reminder Foto Kelas">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Dokumentasi</p><h1>Saatnya Foto Kelas Hari Ini</h1><p class="lead">Abadikan proses belajar agar siswa punya memori baik dari Holiday Program.</p></div>
+        <div class="photo-template">
+          <div class="photo-frame">
+            <img src="assets/template-kids-right.png" alt="Template dokumentasi kelas">
+          </div>
+          <div class="photo-caption">
+            <h2>Ide Foto yang Bisa Diambil</h2>
+            <ul>
+              <li>Foto siswa memegang worksheet atau hasil karya.</li>
+              <li>Foto produk/booth yang sudah dibuat siswa.</li>
+              <li>Foto suasana diskusi, praktik, atau market day.</li>
+            </ul>
+            <p><strong>Caption singkat:</strong><br>"Hari ini kami belajar menjadi Mathpreneur: kreatif membuat produk, berani menjelaskan ide, dan cermat memakai matematika."</p>
+            <p class="mini">Fokus dokumentasi pertemuan 1: ide produk, brand awal, logo/slogan, dan worksheet ide siswa.</p>
+          </div>
+        </div>
+        <div class="speaker-note">
+        <p>Ambil foto setelah aktivitas utama selesai agar kelas tidak terpotong. Pastikan mengikuti kebijakan dokumentasi dan izin foto yang berlaku di cabang.</p>
+        </div></article>
+    </section>
+    <footer class="footer-bar">
+      <div class="controls">
+        <button class="icon-button" id="prevBtn" type="button" aria-label="Slide sebelumnya">&lt;</button>
+        <button class="icon-button" id="nextBtn" type="button" aria-label="Slide berikutnya">&gt;</button>
+        <span class="slide-meter"><span id="slideNumber">1</span>&nbsp;/&nbsp;<span id="slideTotal">1</span></span>
+      </div>
+      <div class="mini-actions">
+        <button class="icon-button" id="noteBtn" type="button">Catatan Guru</button>
+        <button class="icon-button" id="overviewBtn" type="button">Daftar Slide</button>
+      </div>
+    </footer>
+  </main>
+  <aside class="notes-panel" id="notesPanel" hidden>
+    <h2>Catatan Guru</h2>
+    <div id="notesContent"></div>
+  </aside>
+  <aside class="overview" id="overview" hidden>
+    <h2>Daftar Slide</h2>
+    <div class="overview-list" id="overviewList"></div>
+    <p class="mini" style="margin-top:12px;">Tips: tombol panah kanan/kiri untuk pindah slide. Tombol N untuk catatan guru.</p>
+    <button class="icon-button" id="closeOverview" type="button">Tutup</button>
+  </aside>
+  <script>
+const slides = Array.from(document.querySelectorAll(".slide"));
+const stage = document.querySelector(".stage");
+const prev = document.querySelector("#prevBtn");
+const next = document.querySelector("#nextBtn");
+const noteBtn = document.querySelector("#noteBtn");
+const notes = document.querySelector("#notesPanel");
+const notesContent = document.querySelector("#notesContent");
+const overview = document.querySelector("#overview");
+const overviewList = document.querySelector("#overviewList");
+const overviewBtn = document.querySelector("#overviewBtn");
+const closeOverview = document.querySelector("#closeOverview");
+const slideNumber = document.querySelector("#slideNumber");
+const slideTotal = document.querySelector("#slideTotal");
+let current = 0;
+
+function resizeDeck() {
+  const rect = stage.getBoundingClientRect();
+  stage.style.setProperty("--deck-scale", rect.width / 1600);
+}
+function hashToIndex() {
+  const raw = Number((location.hash || "#1").slice(1));
+  if (Number.isFinite(raw) && raw >= 1 && raw <= slides.length) return raw - 1;
+  return 0;
+}
+function syncNotes() {
+  const note = slides[current].querySelector(".speaker-note");
+  notesContent.innerHTML = note ? note.innerHTML : "<p>Tidak ada catatan guru untuk slide ini.</p>";
+}
+function show(index, push = true) {
+  current = Math.max(0, Math.min(slides.length - 1, index));
+  slides.forEach((slide, i) => slide.classList.toggle("is-active", i === current));
+  slideNumber.textContent = String(current + 1);
+  prev.disabled = current === 0;
+  next.disabled = current === slides.length - 1;
+  syncNotes();
+  if (push) history.replaceState(null, "", `#${current + 1}`);
+}
+function buildOverview() {
+  slideTotal.textContent = String(slides.length);
+  overviewList.innerHTML = "";
+  slides.forEach((slide, i) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = `${i + 1}. ${slide.dataset.title || "Slide"}`;
+    button.addEventListener("click", () => {
+      overview.hidden = true;
+      show(i);
+    });
+    overviewList.appendChild(button);
+  });
+}
+buildOverview();
+show(hashToIndex(), false);
+resizeDeck();
+addEventListener("resize", resizeDeck);
+addEventListener("hashchange", () => show(hashToIndex(), false));
+prev.addEventListener("click", () => show(current - 1));
+next.addEventListener("click", () => show(current + 1));
+noteBtn.addEventListener("click", () => { notes.hidden = !notes.hidden; overview.hidden = true; });
+overviewBtn.addEventListener("click", () => { overview.hidden = !overview.hidden; notes.hidden = true; });
+closeOverview.addEventListener("click", () => { overview.hidden = true; });
+addEventListener("keydown", (event) => {
+  if (event.key === "ArrowRight" || event.key === "PageDown") show(current + 1);
+  if (event.key === "ArrowLeft" || event.key === "PageUp") show(current - 1);
+  if (event.key.toLowerCase() === "g") overview.hidden = !overview.hidden;
+  if (event.key.toLowerCase() === "n") notes.hidden = !notes.hidden;
+});
+</script>
+</body>
+</html>

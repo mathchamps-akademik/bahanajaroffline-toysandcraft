@@ -1,0 +1,1153 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toys &amp; Craft - Pertemuan 3</title>
+  <style>
+:root {
+  --ink: #12333d;
+  --muted: #49646b;
+  --teal: #0f7776;
+  --blue: #285f9e;
+  --sky: #a8def0;
+  --mint: #dcefd7;
+  --cream: #fff4bf;
+  --yellow: #ffd769;
+  --orange: #f6a34a;
+  --coral: #ef705f;
+  --purple: #7467d9;
+  --paper: #fffdf8;
+  --line: rgba(15, 119, 118, 0.32);
+  --shadow: 0 22px 46px rgba(18, 51, 61, 0.18);
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.92) 0 48px, transparent 49px),
+    radial-gradient(circle at 19% 16%, rgba(255, 255, 255, 0.78) 0 34px, transparent 35px),
+    radial-gradient(circle at 88% 20%, rgba(255, 255, 255, 0.75) 0 46px, transparent 47px),
+    linear-gradient(135deg, #fff4bf 0%, #dcefd7 42%, #a8def0 100%);
+  overflow: hidden;
+}
+button { font: inherit; }
+.deck-shell {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  place-items: center;
+  padding: 22px;
+}
+.stage {
+  width: min(calc(100vw - 44px), calc((100vh - 124px) * 16 / 9), 1600px);
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  background: var(--paper);
+}
+.slide {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 1600px;
+  height: 900px;
+  padding: 46px 58px 54px;
+  transform: scale(var(--deck-scale, 1));
+  transform-origin: top left;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 94% 14%, rgba(255, 255, 255, 0.86) 0 50px, transparent 51px),
+    radial-gradient(circle at 8% 84%, rgba(15, 119, 118, 0.18) 0 130px, transparent 131px),
+    linear-gradient(90deg, rgba(255,244,191,.75), rgba(220,239,215,.82) 42%, rgba(168,222,240,.9));
+}
+.slide.is-active { display: block; }
+.slide::before {
+  content: "";
+  position: absolute;
+  left: -44px;
+  top: 146px;
+  width: 170px;
+  height: 610px;
+  background: rgba(255, 215, 105, 0.45);
+  border: 5px solid rgba(18, 51, 61, 0.18);
+  transform: rotate(-8deg);
+  border-radius: 34px;
+  pointer-events: none;
+}
+.slide::after {
+  content: "";
+  position: absolute;
+  right: -56px;
+  bottom: -42px;
+  width: 240px;
+  height: 250px;
+  background:
+    linear-gradient(135deg, rgba(47, 159, 154, 0.72), rgba(40, 95, 158, 0.35));
+  border-radius: 70% 0 0 0;
+  pointer-events: none;
+}
+.slide > * { position: relative; z-index: 1; }
+.slide-art {
+  position: absolute;
+  z-index: 0;
+  right: 48px;
+  bottom: 44px;
+  width: 230px;
+  height: 160px;
+  pointer-events: none;
+  opacity: .22;
+}
+.slide-art img {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+  border: 4px solid rgba(18,51,61,.46);
+  border-radius: 18px;
+  background: rgba(231,243,255,.72);
+  box-shadow: 0 10px 0 rgba(18,51,61,.10);
+}
+.slide-art .paper { right: 0; top: 0; width: 138px; height: 98px; transform: rotate(8deg); }
+.slide-art .sticker { left: 0; top: 34px; width: 132px; height: 96px; transform: rotate(-8deg); }
+.slide-art .beads { right: 16px; bottom: 0; width: 132px; height: 92px; transform: rotate(-4deg); }
+.cover::before, .cover::after, .plain::before, .plain::after { display: none; }
+.cover .slide-art, .plain .slide-art { display: none; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2, h3 {
+  letter-spacing: 0;
+  color: #0a6f70;
+  text-shadow:
+    3px 0 #fffdf8, -3px 0 #fffdf8, 0 3px #fffdf8, 0 -3px #fffdf8,
+    3px 3px #fffdf8, -3px -3px #fffdf8, 3px -3px #fffdf8, -3px 3px #fffdf8,
+    0 8px 0 rgba(18,51,61,.10);
+}
+h1 { margin-bottom: 14px; font-size: 3.72rem; line-height: 1.03; }
+h2 { margin-bottom: 10px; font-size: 2rem; line-height: 1.13; }
+h3 { margin-bottom: 8px; font-size: 1.38rem; line-height: 1.14; color: #1d5c94; }
+p, li, td, th, .pill, .mini { font-size: 1.12rem; line-height: 1.38; }
+p, li, td { font-family: "Trebuchet MS", Arial, sans-serif; font-weight: 500; }
+.card p, .card li,
+.note p, .note li,
+.teacher-box p, .teacher-box li,
+.example-box p, .example-box li,
+.process .step p {
+  font-size: 1.34rem;
+  line-height: 1.38;
+}
+.example-box .mini,
+.card .mini,
+.note .mini {
+  font-size: 1.16rem;
+  line-height: 1.32;
+}
+.eyebrow {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  padding: 7px 15px;
+  border: 3px solid #fffdf8;
+  border-radius: 999px;
+  color: #fffdf8;
+  background: #f6a34a;
+  font-size: 1.02rem;
+  font-weight: 950;
+  text-transform: uppercase;
+  box-shadow: 0 6px 0 rgba(29,92,148,.24);
+}
+.lead {
+  max-width: 940px;
+  color: #193f47;
+  font-size: 1.42rem;
+  line-height: 1.36;
+  font-weight: 650;
+}
+.slide-header {
+  max-width: 1200px;
+  margin: 0 auto 26px;
+  text-align: center;
+}
+.slide-header .lead { margin-left: auto; margin-right: auto; }
+.cover-grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, .82fr);
+  gap: 34px;
+  align-items: center;
+}
+.cover-panel {
+  padding: 44px 50px;
+  border: 7px solid rgba(47, 159, 154, .54);
+  border-radius: 30px;
+  background: rgba(255,253,248,.96);
+  box-shadow: var(--shadow);
+}
+.cover-visual {
+  min-height: 560px;
+  display: grid;
+  place-items: center;
+  border: 6px solid rgba(255,255,255,.74);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 40% 22%, #ffd769 0 72px, transparent 73px),
+    radial-gradient(circle at 62% 52%, #ef705f 0 58px, transparent 59px),
+    radial-gradient(circle at 33% 65%, #7467d9 0 45px, transparent 46px),
+    linear-gradient(145deg, rgba(255,255,255,.68), rgba(168,222,240,.72));
+}
+.craft-stack {
+  width: 430px;
+  height: 430px;
+  position: relative;
+}
+.craft-stack img {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+  border: 5px solid #12333d;
+  border-radius: 24px;
+  background: #e7f3ff;
+  box-shadow: 0 14px 0 rgba(18,51,61,.13);
+}
+.craft-stack .paper { left: 142px; top: 26px; width: 250px; height: 190px; transform: rotate(8deg); }
+.craft-stack .bead { left: 162px; top: 204px; width: 250px; height: 175px; transform: rotate(-7deg); }
+.craft-stack .sticker { left: 8px; top: 132px; width: 250px; height: 185px; transform: rotate(-8deg); }
+.mission-row, .pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.pill {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 8px 15px;
+  border: 3px solid rgba(18,51,61,.16);
+  border-radius: 999px;
+  background: var(--yellow);
+  color: #12333d;
+  font-weight: 900;
+}
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; }
+.two.wide-left { grid-template-columns: 1.18fr .82fr; }
+.two.wide-right { grid-template-columns: .82fr 1.18fr; }
+.three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.four { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.card, .note, .worksheet-shot, .table-wrap, .teacher-box, .formula, .example-box {
+  border: 4px solid rgba(15,119,118,.28);
+  border-radius: 22px;
+  background: rgba(255,253,248,.95);
+  box-shadow: 0 10px 0 rgba(18,51,61,.08), 0 16px 28px rgba(18,51,61,.08);
+}
+.card, .note, .teacher-box, .formula, .example-box { padding: 20px 22px; }
+.card h3, .note h3, .formula h3, .example-box h3 { margin-bottom: 10px; }
+.card ul, .note ul, .teacher-box ul, .example-box ul { margin: 0; padding-left: 25px; }
+.card li, .note li, .teacher-box li, .example-box li { margin-bottom: 8px; }
+.card li:last-child, .note li:last-child, .teacher-box li:last-child, .example-box li:last-child { margin-bottom: 0; }
+.example-mini {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 3px dashed rgba(246,163,74,.68);
+  border-radius: 16px;
+  background: #fff8d6;
+}
+.example-mini h3 {
+  margin-bottom: 6px;
+  color: #9c4f13;
+  font-size: 1.28rem;
+}
+.example-mini p {
+  margin-bottom: 0;
+  font-size: 1.24rem;
+  line-height: 1.32;
+}
+.note { background: rgba(255, 248, 214, .96); border-color: rgba(246,163,74,.62); }
+.teacher-box { background: #f4f9ff; border-color: rgba(40,95,158,.42); }
+.teacher-box h2, .teacher-box h3 { color: #1d5c94; }
+.warning { background: #fff0ec; border-color: rgba(239,112,95,.5); }
+.formula {
+  display: grid;
+  min-height: 150px;
+  align-content: center;
+  text-align: center;
+  background: #eaf8f7;
+  border-color: rgba(47,159,154,.55);
+}
+.formula strong {
+  display: block;
+  color: #0a6f70;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+.asset-mini {
+  width: 100%;
+  height: 132px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 8px;
+  border: 3px solid rgba(18,51,61,.14);
+  border-radius: 16px;
+  background: #e7f3ff;
+}
+.label-demo-wrap {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.label-demo-card {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+.label-demo-card h2 { margin-bottom: 0; font-size: 1.42rem; line-height: 1.14; }
+.bracelet-frame {
+  min-height: 0;
+  height: 310px;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  border: 3px solid rgba(18,51,61,.14);
+  border-radius: 18px;
+  background: #eef9ff;
+}
+.bracelet-frame img {
+  max-width: 82%;
+  max-height: 300px;
+  width: auto;
+  height: 300px;
+  object-fit: contain;
+  display: block;
+}
+.product-mock {
+  min-height: 360px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  border: 4px solid rgba(40,95,158,.30);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255,215,105,.55), transparent 22%),
+    linear-gradient(145deg, #f8fdff, #dff4ff);
+  overflow: hidden;
+}
+.product-mock::before {
+  content: "";
+  position: absolute;
+  inset: 40px 76px 42px;
+  border: 5px solid rgba(18,51,61,.22);
+  border-radius: 28px;
+  background: rgba(255,255,255,.55);
+}
+.product-mock img {
+  position: relative;
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+  z-index: 1;
+}
+.bracelet-asset, .display-asset {
+  width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  display: block;
+  margin: 4px auto 0;
+}
+.display-asset { max-height: 360px; }
+.product-label {
+  position: absolute;
+  left: 90px;
+  right: 90px;
+  bottom: 56px;
+  z-index: 2;
+  padding: 12px 14px;
+  border: 4px solid #12333d;
+  border-radius: 18px;
+  background: #fff8d6;
+  text-align: center;
+  box-shadow: 0 8px 0 rgba(18,51,61,.12);
+}
+.product-label strong { display: block; color: #0a6f70; font-size: 1.28rem; }
+.product-label span { display: block; font-size: 1rem; line-height: 1.22; font-weight: 700; }
+.price-tag {
+  position: absolute;
+  right: 70px;
+  top: 50px;
+  z-index: 3;
+  padding: 10px 14px;
+  border: 4px solid #12333d;
+  border-radius: 14px;
+  background: #ffd769;
+  color: #592a08;
+  font-size: 1.34rem;
+  font-weight: 950;
+  transform: rotate(7deg);
+}
+.worksheet-shot {
+  overflow: hidden;
+  padding: 10px;
+  background: #fff;
+}
+.worksheet-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 610px;
+  object-fit: contain;
+  border-radius: 15px;
+}
+.table-wrap { overflow: hidden; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,253,248,.96);
+}
+th, td {
+  padding: 12px 14px;
+  border-bottom: 2px solid rgba(15,119,118,.18);
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  color: #0a6f70;
+  background: rgba(220,239,215,.86);
+  font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
+  font-weight: 950;
+}
+td:first-child, th:first-child { white-space: nowrap; }
+.rundown th:nth-child(1) { width: 120px; }
+.rundown th:nth-child(2) { width: 360px; }
+.rundown th:nth-child(3) { width: auto; }
+.rundown th:nth-child(4) { width: 280px; }
+.split-list {
+  display: grid;
+  gap: 12px;
+}
+.big-number {
+  display: inline-grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  margin-right: 10px;
+  border-radius: 16px;
+  color: #fffdf8;
+  background: #1d5c94;
+  font-size: 1.5rem;
+  font-weight: 950;
+}
+.process {
+  display: grid;
+  gap: 14px;
+}
+.process .step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255,253,248,.92);
+  border: 3px solid rgba(15,119,118,.22);
+}
+.step p { margin-bottom: 0; }
+.mini { color: var(--muted); font-weight: 500; }
+.center { text-align: center; }
+.student-fill {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+.fill-row {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+  align-items: stretch;
+  min-height: 190px;
+  padding: 20px 22px;
+  border: 3px dashed rgba(40,95,158,.38);
+  border-radius: 24px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 8px 0 rgba(18,51,61,.08);
+}
+.fill-row span:first-child { color: #1d5c94; font-weight: 950; font-size: 1.42rem; }
+.fill-row.wide { grid-column: span 2; }
+.line {
+  min-height: 78px;
+  border-bottom: 3px solid rgba(18,51,61,.36);
+}
+.share-example {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 16px;
+  padding: 14px 18px;
+  border: 4px solid rgba(246,163,74,.55);
+  border-radius: 20px;
+  background: #fff8d6;
+}
+.share-example strong { color: #9c4f13; font-size: 1.22rem; }
+.share-example p { margin-bottom: 0; font-size: 1.24rem; line-height: 1.32; }
+.teacher-script {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+.teacher-script p {
+  margin: 0;
+  padding: 12px 15px;
+  border-left: 8px solid #f6a34a;
+  border-radius: 12px;
+  background: rgba(255,253,248,.9);
+}
+.cpa-box {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.cpa-item {
+  padding: 14px;
+  border: 3px solid rgba(40,95,158,.28);
+  border-radius: 16px;
+  background: rgba(255,253,248,.92);
+}
+.cpa-item strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #1d5c94;
+  font-size: 1.2rem;
+}
+.cpa-item p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.28;
+}
+.photo-template {
+  display: grid;
+  grid-template-columns: .95fr 1.05fr;
+  gap: 22px;
+  align-items: stretch;
+}
+.photo-frame {
+  min-height: 360px;
+  display: grid;
+  place-items: center;
+  border: 6px dashed rgba(40,95,158,.42);
+  border-radius: 28px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.88), rgba(223,244,255,.92));
+  overflow: hidden;
+}
+.photo-frame img {
+  width: 88%;
+  max-height: 330px;
+  object-fit: contain;
+}
+.photo-caption {
+  padding: 22px;
+  border: 4px solid rgba(246,163,74,.58);
+  border-radius: 24px;
+  background: #fff8d6;
+}
+.photo-caption h2 { color: #9c4f13; }
+.photo-caption p { font-size: 1.32rem; line-height: 1.36; }
+.footer-bar {
+  width: min(calc(100vw - 44px), 1600px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+.controls, .mini-actions { display: flex; align-items: center; gap: 8px; }
+.icon-button {
+  min-width: 44px;
+  min-height: 42px;
+  display: inline-grid;
+  place-items: center;
+  padding: 8px 12px;
+  border: 3px solid rgba(15,119,118,.35);
+  border-radius: 999px;
+  color: #082f35;
+  background: #fffdf8;
+  font-weight: 950;
+  cursor: pointer;
+  box-shadow: 0 6px 0 rgba(18,51,61,.12);
+}
+.slide-meter {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,253,248,.92);
+  border: 3px solid rgba(15,119,118,.28);
+  font-weight: 950;
+}
+.notes-panel, .overview {
+  position: fixed;
+  z-index: 10;
+  right: 22px;
+  bottom: 78px;
+  width: min(520px, calc(100vw - 44px));
+  max-height: min(620px, calc(100vh - 120px));
+  overflow: auto;
+  border: 4px solid rgba(40,95,158,.38);
+  border-radius: 22px;
+  background: #fffdf8;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+.notes-panel[hidden], .overview[hidden] { display: none; }
+.notes-panel h2, .overview h2 { margin-bottom: 10px; font-size: 1.45rem; }
+.notes-panel p, .notes-panel li { font-size: 1rem; line-height: 1.36; }
+.speaker-note { display: none; }
+.overview-list { display: grid; gap: 8px; }
+.overview-list button {
+  padding: 9px 10px;
+  border: 2px solid rgba(15,119,118,.24);
+  border-radius: 12px;
+  text-align: left;
+  background: rgba(220,239,215,.42);
+  color: var(--ink);
+  cursor: pointer;
+}
+@media print {
+  body { background: #fff; overflow: visible; }
+  .deck-shell { display: block; padding: 0; }
+  .stage { width: auto; height: auto; aspect-ratio: auto; overflow: visible; box-shadow: none; border-radius: 0; }
+  .slide {
+    display: block !important;
+    position: relative;
+    inset: auto;
+    transform: none !important;
+    page-break-after: always;
+    break-after: page;
+    width: 1600px;
+    height: 900px;
+    border-radius: 0;
+  }
+  .footer-bar, .notes-panel, .overview { display: none !important; }
+  @page { size: 1600px 900px; margin: 0; }
+}
+</style>
+</head>
+<body>
+  <main class="deck-shell">
+    <section class="stage">
+      <article class="slide is-active cover plain" data-title="Pertemuan 3">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="cover-grid">
+          <div class="cover-panel">
+            <p class="eyebrow">Holiday Program Mathpreneur</p>
+            <h1>Pertemuan 3:<br>Craftpreneurs: Launch &amp; Market Day</h1>
+            <p class="lead">Hari ini siswa membuka booth, menjual produk kreatif, mencatat penjualan, menghitung laba/rugi, lalu refleksi.</p>
+            <div class="mission-row"><span>Sales Script</span><span>Booth Setup</span><span>Revenue</span><span>Profit / Loss</span></div>
+          </div>
+          <div class="cover-visual">
+            <div class="craft-stack" aria-hidden="true">
+              <img class="paper" src="assets/icon-paper.png" alt="">
+              <img class="bead" src="assets/icon-beads.png" alt="">
+              <img class="sticker" src="assets/icon-sticker.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">
+        <p>Slide ini boleh ditampilkan ke siswa. Tekankan bahwa tema kali ini bukan makanan, tetapi produk kreatif yang bisa dibuat dari bahan sederhana.</p>
+        <p>Gunakan kata "Mathpreneur" sebagai jembatan: siswa belajar membuat produk sekaligus memakai matematika untuk mengambil keputusan.</p>
+        </div></article><article class="slide" data-title="Catatan Guru P3">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Slide khusus guru</p><h1>Catatan Guru Sebelum Kelas</h1><p class="lead">Slide ini untuk guru. Tidak perlu ditampilkan ke siswa saat presentasi kelas.</p></div>
+        <div class="two">
+          <div class="teacher-box">
+            <h2>Checklist Utama</h2>
+            <ul><li>Pastikan siswa membawa produk, label harga, catatan modal, dan worksheet.</li><li>Siapkan area market day yang jelas: meja jualan, alur pembeli, dan area hitung.</li><li>Tentukan aturan uang transaksi jika memakai uang mainan atau simulasi.</li><li>Siapkan timer untuk roleplay dan market day.</li><li>Jaga suasana tetap positif. Fokus pada proses, bukan siapa yang paling banyak menjual.</li></ul>
+          </div>
+          <div class="teacher-box warning">
+            <h2>Fokus Fasilitasi</h2>
+            <ul>
+              <li>Jaga bahasa tetap sederhana: produk, pembeli, modal, harga, untung.</li>
+              <li>Untuk siswa yang bingung, berikan 2 pilihan konkret lalu minta mereka memilih.</li>
+              <li>Untuk kegiatan craft, ingatkan keamanan alat: gunting, lem, dan manik-manik kecil.</li>
+              <li>Tujuan kelas bukan produk sempurna, tetapi siswa bisa menjelaskan proses berpikirnya.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="speaker-note">
+        <p>Gunakan slide ini saat briefing guru atau sebelum siswa masuk. Setelah kelas dimulai, guru dapat langsung lompat ke slide cover atau rundown.</p>
+        </div></article><article class="slide" data-title="Rundown Pertemuan 3">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Pertemuan 3 - 100 menit</p><h1>Rundown Pertemuan 3</h1><p class="lead">Panduan waktu fleksibel. Jika diskusi siswa ramai, pangkas sharing dan lanjutkan worksheet inti.</p></div>
+        <div class="table-wrap">
+          <table class="rundown">
+            <thead><tr><th>Durasi</th><th>Aktivitas</th><th>Yang dilakukan siswa</th><th>Hasil akhir</th></tr></thead>
+            <tbody><tr><td>10 mnt</td><td>Setup & Safety</td><td>Menata produk dan mengecek label</td><td>Booth siap</td></tr><tr><td>10 mnt</td><td>Pre Test 3</td><td>Mengerjakan 5 soal</td><td>Pemahaman awal terlihat</td></tr><tr><td>15 mnt</td><td>Worksheet 8</td><td>Membuat sales script dan latihan jualan</td><td>Script siap</td></tr><tr><td>15 mnt</td><td>Final Touch</td><td>Memasang label/price tag dan display</td><td>Produk siap jual</td></tr><tr><td>25 mnt</td><td>Market Day</td><td>Menjual produk dan mencatat penjualan</td><td>Data penjualan terkumpul</td></tr><tr><td>15 mnt</td><td>Worksheet 9</td><td>Menghitung penjualan, laba/rugi, refleksi</td><td>Laporan mini</td></tr><tr><td>5 mnt</td><td>Post Test 3</td><td>Mengerjakan 5 soal</td><td>Pemahaman akhir terlihat</td></tr><tr><td>5 mnt</td><td>Closing</td><td>Apresiasi dan kesimpulan</td><td>Program selesai</td></tr></tbody>
+          </table>
+        </div>
+        <div class="speaker-note">
+        <p>Durasi dibuat kelipatan 5 menit agar mudah dipakai di kelas. Pakai timer visual jika tersedia.</p>
+        <p>Jika kelas lebih cepat, tambahkan sesi contoh atau roleplay. Jika kelas lebih lambat, prioritaskan worksheet inti dan tugas rumah.</p>
+        </div></article><article class="slide" data-title="Tujuan Pertemuan 3">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Pertemuan 3</p><h1>Tujuan Belajar Hari Ini</h1><p class="lead">Di akhir kelas, siswa punya output yang bisa dilanjutkan ke pertemuan berikutnya.</p></div>
+        <div class="two">
+          <div class="card">
+            <h2>Siswa Bisa...</h2>
+            <ul><li>Menjelaskan produk dengan sales script singkat.</li><li>Menata booth/display sederhana.</li><li>Mencatat jumlah produk yang terjual.</li><li>Menghitung total penjualan, laba, atau rugi.</li><li>Merefleksikan hal yang berhasil dan hal yang ingin diperbaiki.</li></ul>
+          </div>
+          <div class="note">
+            <h2>Matematika yang Dipakai</h2>
+            <ul><li>Perkalian harga jual x jumlah terjual.</li><li>Pengurangan total penjualan - total modal.</li><li>Membandingkan untung, rugi, atau balik modal.</li><li>Membaca data penjualan untuk membuat kesimpulan.</li></ul>
+          </div>
+        </div>
+        <div class="speaker-note">
+        <p>Guru tidak perlu memakai istilah matematika yang terlalu formal. Sebutkan konsepnya lewat kegiatan: menghitung, membandingkan, membagi rata, dan menentukan selisih.</p>
+        </div></article><article class="slide" data-title="Aturan Market Day">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Market Day</p><h1>Aturan Aman dan Seru</h1><p class="lead">Sebelum mulai, semua siswa perlu tahu peran dan aturan main.</p></div>
+            <div class="three">
+              <div class="card"><h2>Ramah</h2><p>Sapa pembeli dengan sopan dan jelas.</p></div>
+              <div class="card"><h2>Jujur</h2><p>Harga dan jumlah produk ditulis apa adanya.</p></div>
+              <div class="card"><h2>Aman</h2><p>Jangan berlari, jangan berebut, dan jaga produk teman.</p></div>
+            </div>
+            <div class="note" style="margin-top:18px;"><h2>Kalimat Guru</h2><p>"Hari ini kita latihan menjadi entrepreneur. Yang dinilai bukan hanya laku banyak, tetapi cara menjelaskan, menghitung, dan belajar dari pengalaman."</p></div>
+            <div class="speaker-note">
+            <p>Tentukan alur pembeli: separuh kelas jadi penjual dulu, separuh jadi pembeli, lalu tukar. Ini membuat kelas lebih tertib.</p>
+            </div></article><article class="slide" data-title="Pre Test 3">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Pre Test 3</p><h1>Pre Test 3: Cek Pemahaman</h1><p class="lead">Waktu pengerjaan 10 menit. Kerjakan sendiri dulu, lalu guru kumpulkan hasilnya.</p></div>
+        <div class="two">
+          <div class="card">
+            <h2>Arahan untuk Siswa</h2>
+            <ul>
+              <li>Baca soal dengan pelan.</li>
+              <li>Pilih satu jawaban yang paling tepat.</li>
+              <li>Jika belum tahu, pilih jawaban yang menurutmu paling masuk akal.</li>
+              <li>Tidak perlu takut salah. Ini untuk melihat pemahaman awal dan akhir.</li>
+            </ul>
+          </div>
+          <div class="teacher-box">
+            <h2>Catatan Guru</h2>
+            <ul>
+              <li>Pastikan semua siswa mendapat lembar test.</li>
+              <li>Untuk siswa yang belum lancar membaca, bantu bacakan soal tanpa mengarahkan jawabannya.</li>
+              <li>Setelah selesai, simpan hasil test sesuai prosedur cabang.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="speaker-note">
+        <p>Untuk kelas offline, test dapat diprint dari file PDF pada hub. Guru boleh membacakan instruksi, tetapi tidak memberi petunjuk jawaban.</p>
+        </div></article><article class="slide" data-title="Worksheet 8">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Worksheet 8</p><h1>Sales Champion</h1><p class="lead">Siswa membuat kalimat jualan singkat sebelum market day.</p></div>
+        <div class="two wide-left">
+          <div class="worksheet-shot"><img src="assets/worksheet-8-sales-champion.png" alt="Sales Champion"></div>
+          <div class="card">
+            <h2>Langkah Mengerjakan</h2>
+            <ul><li>Tulis nama produk dan harga.</li><li>Tulis bahan utama dan keunggulan produk.</li><li>Latih cara menjelaskan dalam 30-60 detik.</li><li>Gunakan suara jelas dan ekspresi ramah.</li></ul>
+            <div class="example-mini"><h3>Contoh</h3>
+            <p><strong>Script:</strong> "Halo, ini Gelang Ceria. Warnanya bisa dipilih, cocok untuk hadiah teman, harganya Rp6.000."</p>
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">
+            <p>Jika siswa malu, minta mereka latihan berpasangan terlebih dahulu. Guru bisa memberi contoh satu kali dengan produk imajiner.</p>
+            </div></article><article class="slide" data-title="Formula Script">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Sales Script</p><h1>Formula Sales Script yang Mudah</h1><p class="lead">Siswa cukup menjawab 4 hal utama.</p></div>
+            <div class="four">
+              <div class="card"><h2>Nama</h2><p>Produkku bernama...</p></div>
+              <div class="card"><h2>Bahan</h2><p>Dibuat dari...</p></div>
+              <div class="card"><h2>Keunggulan</h2><p>Produk ini menarik karena...</p></div>
+              <div class="card"><h2>Harga</h2><p>Harganya...</p></div>
+            </div>
+            <div class="example-box" style="margin-top:18px;"><h2>Contoh</h2><p>"Halo, ini Gelang Ceria dari Bead Buddy. Gelang ini dibuat dari beads warna-warni, cocok untuk hadiah teman, dan harganya Rp6.000."</p></div>
+            <div class="speaker-note">
+            <p>Untuk siswa yang cepat selesai, minta mereka membuat versi lebih singkat dan versi lebih ekspresif.</p>
+            </div></article><article class="slide" data-title="Roleplay">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Latihan</p><h1>Roleplay Penjual dan Pembeli</h1><p class="lead">Latihan sebentar membuat siswa lebih percaya diri sebelum Market Day.</p></div>
+            <div class="two">
+              <div class="card">
+                <h2>Penjual</h2>
+                <ul>
+                  <li>Menyapa pembeli.</li>
+                  <li>Menjelaskan produk.</li>
+                  <li>Menyebutkan harga.</li>
+                  <li>Mengucapkan terima kasih.</li>
+                </ul>
+              </div>
+              <div class="card">
+                <h2>Pembeli</h2>
+                <ul>
+                  <li>Mendengarkan penjelasan.</li>
+                  <li>Bertanya dengan sopan.</li>
+                  <li>Memilih produk jika tertarik.</li>
+                  <li>Memberi masukan positif.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="speaker-note">
+            <p>Batasi roleplay 2 menit per pasangan. Jangan terlalu lama agar market day tetap berjalan.</p>
+            </div></article><article class="slide" data-title="Final Touch">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Final Touch</p><h1>Cek Label, Price Tag, dan Display</h1><p class="lead">Sebelum jualan, pastikan pembeli bisa memahami produk dengan cepat.</p></div>
+            <div class="three">
+              <div class="card"><h2>Label</h2><p>Nama produk dan brand terlihat jelas.</p></div>
+              <div class="card"><h2>Price Tag</h2><p>Harga ditulis besar dan rapi.</p></div>
+              <div class="card"><h2>Display</h2><p>Produk mudah dilihat dan tidak tertutup dekorasi.</p></div>
+            </div>
+            <div class="note" style="margin-top:18px;"><h2>Checklist 60 Detik</h2><p>Produk siap, harga siap, catatan penjualan siap, senyum siap.</p></div>
+            <div class="speaker-note">
+            <p>Guru keliling melihat booth. Prioritaskan membantu siswa yang label harganya belum ada atau display-nya masih berantakan.</p>
+            </div></article><article class="slide" data-title="Market Day Flow">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Market Day</p><h1>Craft Market Day Dimulai!</h1><p class="lead">Hari ini kita jual produk kreatif buatan sendiri.</p></div>
+            <div class="process">
+              <div class="step"><span class="big-number">1</span><p>Bagi kelas menjadi 2 kelompok: kelompok penjual pertama dan kelompok pembeli pertama.</p></div>
+              <div class="step"><span class="big-number">2</span><p>Penjual menjelaskan produk dengan sales script.</p></div>
+              <div class="step"><span class="big-number">3</span><p>Pembeli memilih produk dan melakukan transaksi sesuai arahan guru.</p></div>
+              <div class="step"><span class="big-number">4</span><p>Penjual mencatat jumlah produk terjual.</p></div>
+              <div class="step"><span class="big-number">5</span><p>Setelah waktunya habis, kelompok penjual dan pembeli bertukar peran.</p></div>
+            </div>
+            <div class="speaker-note">
+            <p>Jika tidak memakai uang asli, gunakan simulasi poin, kupon, atau uang mainan. Yang penting data jumlah terjual tetap dicatat.</p>
+            </div></article><article class="slide" data-title="Sales Record">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Catatan Penjualan</p><h1>Cara Mencatat Produk Terjual</h1><p class="lead">Catatan yang rapi membuat hitungan laba/rugi jadi mudah.</p></div>
+            <div class="two">
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Produk</th><th>Harga</th><th>Terjual</th><th>Total</th></tr></thead>
+                  <tbody>
+                    <tr><td>Gelang Ceria</td><td>Rp6.000</td><td>4</td><td>Rp24.000</td></tr>
+                    <tr><td>Bookmark Keren</td><td>Rp5.000</td><td>3</td><td>Rp15.000</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="note"><h2>Tips</h2><p>Setiap kali ada transaksi, langsung beri tanda pada catatan. Jangan menunggu sampai akhir karena mudah lupa.</p></div>
+            </div>
+            <div class="speaker-note">
+            <p>Sediakan format catatan sederhana di papan jika siswa belum terbiasa. Guru bisa membantu menghitung di akhir.</p>
+            </div></article><article class="slide" data-title="Total Penjualan">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Matematika Mini</p><h1>Total Penjualan = Harga x Jumlah Terjual</h1><p class="lead">Total penjualan adalah jumlah uang yang masuk dari produk yang terjual.</p></div>
+            <div class="two">
+              <div class="formula"><strong>Rp6.000 x 4 = Rp24.000</strong><p>Gelang Ceria terjual 4 buah.</p></div>
+              <div class="card">
+                <h2>Tips Menghitung</h2>
+                <ul>
+                  <li>Hitung 6 x 4 = 24.</li>
+                  <li>Karena Rp6.000, hasilnya Rp24.000.</li>
+                  <li>Tulis satuan uang dengan rapi.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cpa-box">
+              <div class="cpa-item"><strong>Concrete</strong><p>Pakai 4 kartu produk, masing-masing bernilai Rp6.000.</p></div>
+              <div class="cpa-item"><strong>Pictorial</strong><p>Gambar 4 gelang, tulis Rp6.000 di bawah masing-masing.</p></div>
+              <div class="cpa-item"><strong>Abstract</strong><p>Rp6.000 x 4 = Rp24.000.</p></div>
+            </div>
+            <div class="speaker-note">
+            <p>Jika ada beberapa produk dengan harga berbeda, hitung satu per satu lalu jumlahkan.</p>
+            </div></article><article class="slide" data-title="Profit Loss">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Matematika Mini</p><h1>Laba atau Rugi?</h1><p class="lead">Bandingkan total penjualan dengan total modal.</p></div>
+            <div class="three">
+              <div class="formula"><h3>Laba</h3><strong>Penjualan &gt; Modal</strong><p>Ada keuntungan.</p></div>
+              <div class="formula"><h3>Balik Modal</h3><strong>Penjualan = Modal</strong><p>Tidak untung, tidak rugi.</p></div>
+              <div class="formula"><h3>Rugi</h3><strong>Penjualan &lt; Modal</strong><p>Modal belum tertutup.</p></div>
+            </div>
+            <div class="example-box" style="margin-top:18px;"><h2>Contoh</h2><p>Total penjualan Rp24.000, modal Rp20.000. Laba = Rp24.000 - Rp20.000 = Rp4.000.</p></div>
+            <div class="cpa-box">
+              <div class="cpa-item"><strong>Concrete</strong><p>Bandingkan uang hasil jualan dan kartu modal.</p></div>
+              <div class="cpa-item"><strong>Pictorial</strong><p>Gambar dua bar: penjualan dan modal.</p></div>
+              <div class="cpa-item"><strong>Abstract</strong><p>Penjualan - modal = laba/rugi.</p></div>
+            </div>
+            <div class="speaker-note">
+            <p>Sampaikan bahwa rugi dalam simulasi bukan gagal. Itu data untuk belajar memperbaiki harga, jumlah produksi, atau cara promosi.</p>
+            </div></article><article class="slide" data-title="Worksheet 9">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Worksheet 9</p><h1>Entrepreneur Reflection</h1><p class="lead">Siswa menghitung hasil akhir dan menulis refleksi.</p></div>
+        <div class="two wide-left">
+          <div class="worksheet-shot"><img src="assets/worksheet-9-entrepreneur-reflection.png" alt="Entrepreneur Reflection"></div>
+          <div class="card">
+            <h2>Langkah Mengerjakan</h2>
+            <ul><li>Tulis jumlah produk terjual.</li><li>Hitung total penjualan.</li><li>Bandingkan dengan total modal.</li><li>Tentukan laba, rugi, atau balik modal.</li><li>Tulis hal yang berhasil dan hal yang ingin diperbaiki.</li></ul>
+            <div class="example-mini"><h3>Contoh</h3>
+            <p><strong>Yang berhasil:</strong> pembeli suka warna produknya.</p>
+            <p><strong>Yang diperbaiki:</strong> label harga dibuat lebih besar.</p>
+            </div>
+          </div>
+        </div>
+        <div class="speaker-note">
+            <p>Refleksi adalah bagian penting. Jangan hanya berhenti di hitungan uang. Minta siswa menyebut satu pelajaran dari prosesnya.</p>
+            </div></article><article class="slide" data-title="Contoh Refleksi">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Contoh</p><h1>Contoh Mengisi Refleksi</h1><p class="lead">Gunakan contoh agar siswa punya bayangan sebelum menulis.</p></div>
+            <div class="two">
+              <div class="example-box">
+                <h2>Hitungan</h2>
+                <p>Modal: Rp20.000<br>Total penjualan: Rp24.000<br>Laba: Rp4.000</p>
+              </div>
+              <div class="example-box">
+                <h2>Refleksi</h2>
+                <p>Yang berhasil: pembeli suka warna gelangku.</p>
+                <p>Yang ingin diperbaiki: label harga harus dibuat lebih besar.</p>
+              </div>
+            </div>
+            <div class="speaker-note">
+            <p>Untuk siswa yang tidak mendapatkan laba, contohkan kalimat refleksi positif: "Saya belajar harga perlu dihitung lagi" atau "Saya perlu membuat display lebih jelas."</p>
+            </div></article><article class="slide" data-title="Post Test 3">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Post Test 3</p><h1>Post Test 3: Cek Pemahaman</h1><p class="lead">Waktu pengerjaan 5 menit. Kerjakan sendiri dulu, lalu guru kumpulkan hasilnya.</p></div>
+        <div class="two">
+          <div class="card">
+            <h2>Arahan untuk Siswa</h2>
+            <ul>
+              <li>Baca soal dengan pelan.</li>
+              <li>Pilih satu jawaban yang paling tepat.</li>
+              <li>Jika belum tahu, pilih jawaban yang menurutmu paling masuk akal.</li>
+              <li>Tidak perlu takut salah. Ini untuk melihat pemahaman awal dan akhir.</li>
+            </ul>
+          </div>
+          <div class="teacher-box">
+            <h2>Catatan Guru</h2>
+            <ul>
+              <li>Pastikan semua siswa mendapat lembar test.</li>
+              <li>Untuk siswa yang belum lancar membaca, bantu bacakan soal tanpa mengarahkan jawabannya.</li>
+              <li>Setelah selesai, simpan hasil test sesuai prosedur cabang.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="speaker-note">
+        <p>Untuk kelas offline, test dapat diprint dari file PDF pada hub. Guru boleh membacakan instruksi, tetapi tidak memberi petunjuk jawaban.</p>
+        </div></article><article class="slide" data-title="Closing">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+            <div class="slide-header"><p class="eyebrow">Closing</p><h1>Kamu Sudah Menjadi Mini Entrepreneur!</h1><p class="lead">Hari ini kamu membuat produk, menjual, menghitung, dan mengevaluasi.</p></div>
+            <div class="three">
+              <div class="card"><h2>Kreatif</h2><p>Kamu mengubah bahan sederhana jadi produk.</p></div>
+              <div class="card"><h2>Berani</h2><p>Kamu menjelaskan produk ke pembeli.</p></div>
+              <div class="card"><h2>Cermat</h2><p>Kamu menghitung penjualan dan laba/rugi.</p></div>
+            </div>
+            <div class="note" style="margin-top:18px;"><h2>Apresiasi Kelas</h2><p>Berikan apresiasi untuk usaha, keberanian, kerapian, dan kemampuan menghitung. Bukan hanya untuk penjualan terbanyak.</p></div>
+            <div class="speaker-note">
+            <p>Tutup dengan 1-2 siswa berbagi pelajaran. Dokumentasikan foto kelas dan hasil booth sesuai kebutuhan cabang.</p>
+            </div></article><article class="slide" data-title="Reminder Foto Kelas">
+      <div class="slide-art" aria-hidden="true">
+        <img class="paper" src="assets/icon-paper.png" alt="">
+        <img class="sticker" src="assets/icon-sticker.png" alt="">
+        <img class="beads" src="assets/icon-beads.png" alt="">
+      </div>
+    
+        <div class="slide-header"><p class="eyebrow">Dokumentasi</p><h1>Saatnya Foto Kelas Hari Ini</h1><p class="lead">Abadikan proses belajar agar siswa punya memori baik dari Holiday Program.</p></div>
+        <div class="photo-template">
+          <div class="photo-frame">
+            <img src="assets/template-kids-right.png" alt="Template dokumentasi kelas">
+          </div>
+          <div class="photo-caption">
+            <h2>Ide Foto yang Bisa Diambil</h2>
+            <ul>
+              <li>Foto siswa memegang worksheet atau hasil karya.</li>
+              <li>Foto produk/booth yang sudah dibuat siswa.</li>
+              <li>Foto suasana diskusi, praktik, atau market day.</li>
+            </ul>
+            <p><strong>Caption singkat:</strong><br>"Hari ini kami belajar menjadi Mathpreneur: kreatif membuat produk, berani menjelaskan ide, dan cermat memakai matematika."</p>
+            <p class="mini">Fokus dokumentasi pertemuan 3: produk jadi, booth market day, aktivitas jual-beli, dan refleksi laba/rugi.</p>
+          </div>
+        </div>
+        <div class="speaker-note">
+        <p>Ambil foto setelah aktivitas utama selesai agar kelas tidak terpotong. Pastikan mengikuti kebijakan dokumentasi dan izin foto yang berlaku di cabang.</p>
+        </div></article>
+    </section>
+    <footer class="footer-bar">
+      <div class="controls">
+        <button class="icon-button" id="prevBtn" type="button" aria-label="Slide sebelumnya">&lt;</button>
+        <button class="icon-button" id="nextBtn" type="button" aria-label="Slide berikutnya">&gt;</button>
+        <span class="slide-meter"><span id="slideNumber">1</span>&nbsp;/&nbsp;<span id="slideTotal">1</span></span>
+      </div>
+      <div class="mini-actions">
+        <button class="icon-button" id="noteBtn" type="button">Catatan Guru</button>
+        <button class="icon-button" id="overviewBtn" type="button">Daftar Slide</button>
+      </div>
+    </footer>
+  </main>
+  <aside class="notes-panel" id="notesPanel" hidden>
+    <h2>Catatan Guru</h2>
+    <div id="notesContent"></div>
+  </aside>
+  <aside class="overview" id="overview" hidden>
+    <h2>Daftar Slide</h2>
+    <div class="overview-list" id="overviewList"></div>
+    <p class="mini" style="margin-top:12px;">Tips: tombol panah kanan/kiri untuk pindah slide. Tombol N untuk catatan guru.</p>
+    <button class="icon-button" id="closeOverview" type="button">Tutup</button>
+  </aside>
+  <script>
+const slides = Array.from(document.querySelectorAll(".slide"));
+const stage = document.querySelector(".stage");
+const prev = document.querySelector("#prevBtn");
+const next = document.querySelector("#nextBtn");
+const noteBtn = document.querySelector("#noteBtn");
+const notes = document.querySelector("#notesPanel");
+const notesContent = document.querySelector("#notesContent");
+const overview = document.querySelector("#overview");
+const overviewList = document.querySelector("#overviewList");
+const overviewBtn = document.querySelector("#overviewBtn");
+const closeOverview = document.querySelector("#closeOverview");
+const slideNumber = document.querySelector("#slideNumber");
+const slideTotal = document.querySelector("#slideTotal");
+let current = 0;
+
+function resizeDeck() {
+  const rect = stage.getBoundingClientRect();
+  stage.style.setProperty("--deck-scale", rect.width / 1600);
+}
+function hashToIndex() {
+  const raw = Number((location.hash || "#1").slice(1));
+  if (Number.isFinite(raw) && raw >= 1 && raw <= slides.length) return raw - 1;
+  return 0;
+}
+function syncNotes() {
+  const note = slides[current].querySelector(".speaker-note");
+  notesContent.innerHTML = note ? note.innerHTML : "<p>Tidak ada catatan guru untuk slide ini.</p>";
+}
+function show(index, push = true) {
+  current = Math.max(0, Math.min(slides.length - 1, index));
+  slides.forEach((slide, i) => slide.classList.toggle("is-active", i === current));
+  slideNumber.textContent = String(current + 1);
+  prev.disabled = current === 0;
+  next.disabled = current === slides.length - 1;
+  syncNotes();
+  if (push) history.replaceState(null, "", `#${current + 1}`);
+}
+function buildOverview() {
+  slideTotal.textContent = String(slides.length);
+  overviewList.innerHTML = "";
+  slides.forEach((slide, i) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = `${i + 1}. ${slide.dataset.title || "Slide"}`;
+    button.addEventListener("click", () => {
+      overview.hidden = true;
+      show(i);
+    });
+    overviewList.appendChild(button);
+  });
+}
+buildOverview();
+show(hashToIndex(), false);
+resizeDeck();
+addEventListener("resize", resizeDeck);
+addEventListener("hashchange", () => show(hashToIndex(), false));
+prev.addEventListener("click", () => show(current - 1));
+next.addEventListener("click", () => show(current + 1));
+noteBtn.addEventListener("click", () => { notes.hidden = !notes.hidden; overview.hidden = true; });
+overviewBtn.addEventListener("click", () => { overview.hidden = !overview.hidden; notes.hidden = true; });
+closeOverview.addEventListener("click", () => { overview.hidden = true; });
+addEventListener("keydown", (event) => {
+  if (event.key === "ArrowRight" || event.key === "PageDown") show(current + 1);
+  if (event.key === "ArrowLeft" || event.key === "PageUp") show(current - 1);
+  if (event.key.toLowerCase() === "g") overview.hidden = !overview.hidden;
+  if (event.key.toLowerCase() === "n") notes.hidden = !notes.hidden;
+});
+</script>
+</body>
+</html>
