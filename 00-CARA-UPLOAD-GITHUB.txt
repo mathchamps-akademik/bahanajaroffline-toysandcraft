@@ -1,0 +1,18 @@
+UPLOAD FINAL - bahanajaroffline-toysandcraft
+
+Folder ini sudah siap upload ke GitHub Pages.
+
+Cara upload yang benar:
+1. Buka folder ini: UPLOAD-TO-GITHUB-bahanajaroffline-toysandcraft-FINAL.
+2. Jangan upload foldernya sebagai satu folder. Masuk ke dalam foldernya.
+3. Select semua isi di dalam folder ini: semua file dan folder assets, decks, pdf.
+4. Drag/upload semuanya ke root repository GitHub: bahanajaroffline-toysandcraft.
+5. Pilih replace/overwrite kalau GitHub menanyakan file yang sama.
+6. Commit changes.
+7. Tunggu 1-5 menit.
+8. Buka link dengan cache-buster: https://mathchamps-akademik.github.io/bahanajaroffline-toysandcraft/?v=finalupload1
+
+Catatan penting:
+- HTML sudah memakai gambar inline, jadi gambar tetap muncul walaupun folder assets terlambat terbaca.
+- Folder assets tetap disertakan sebagai backup.
+- File .nojekyll disertakan untuk keamanan GitHub Pages.
