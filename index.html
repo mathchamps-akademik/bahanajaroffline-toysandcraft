@@ -3,185 +3,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teaching Kit Offline Toys & Craft</title>
+  <title>Folder PDF - Toys & Craft</title>
   <style>
-    :root {
-      --ink:#12333d; --muted:#49646b; --teal:#0f7776; --blue:#285f9e; --sky:#a8def0; --mint:#dcefd7;
-      --cream:#fff4bf; --yellow:#ffd769; --orange:#f6a34a; --coral:#ef705f; --paper:#fffdf8;
-      --line:rgba(15,119,118,.30); --shadow:0 18px 45px rgba(18,51,61,.14);
-    }
+    :root { --ink:#12333d; --teal:#0f7776; --sky:#a8def0; --mint:#dcefd7; --yellow:#ffd769; --orange:#f6a34a; --paper:#fffdf8; }
     * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
     body {
       margin:0; color:var(--ink);
       font-family:"Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif;
-      background:
-        radial-gradient(circle at 12% 10%, rgba(255,255,255,.85) 0 54px, transparent 55px),
-        radial-gradient(circle at 82% 13%, rgba(255,255,255,.70) 0 46px, transparent 47px),
-        linear-gradient(135deg,#fff4bf,#dcefd7 45%,#a8def0);
+      background:linear-gradient(135deg,#fff4bf,#dcefd7 45%,#a8def0);
     }
     a { color:inherit; text-decoration:none; }
-    .shell { width:min(1180px, calc(100vw - 32px)); margin:0 auto; padding:32px 0 52px; }
-    .hero, .section { border:4px solid var(--line); border-radius:24px; background:rgba(255,253,248,.94); box-shadow:var(--shadow); }
-    .hero { min-height:340px; display:grid; align-content:center; gap:18px; padding:42px; overflow:hidden; position:relative; }
-    .hero-asset-stack { position:absolute; right:44px; bottom:32px; width:280px; height:210px; pointer-events:none; }
-    .hero-asset-stack img { position:absolute; display:block; object-fit:contain; border:4px solid #12333d; border-radius:18px; background:#e7f3ff; box-shadow:0 10px 0 rgba(18,51,61,.12); }
-    .hero-asset-stack .paper { right:0; top:0; width:164px; height:118px; transform:rotate(8deg); }
-    .hero-asset-stack .sticker { left:0; top:42px; width:158px; height:114px; transform:rotate(-8deg); }
-    .hero-asset-stack .beads { right:18px; bottom:0; width:158px; height:110px; transform:rotate(-4deg); }
-    .eyebrow { display:inline-flex; width:max-content; padding:8px 16px; border-radius:999px; color:#fffdf8; background:var(--orange); border:3px solid #fffdf8; font-weight:950; text-transform:uppercase; box-shadow:0 6px 0 rgba(29,92,148,.22); }
-    h1,h2,h3,p { margin-top:0; }
-    h1 { max-width:860px; margin-bottom:0; color:#0a6f70; font-size:clamp(2.3rem,6vw,4.8rem); line-height:1.02; text-shadow:3px 3px #fffdf8,0 8px 0 rgba(18,51,61,.10); }
-    .lead { max-width:760px; margin-bottom:0; color:#213f45; font-size:1.18rem; line-height:1.45; font-family:"Trebuchet MS",Arial,sans-serif; font-weight:650; }
-    .quick-actions, .mini-links, .resource-grid { display:flex; flex-wrap:wrap; gap:10px; }
-    .button { display:inline-flex; min-height:44px; align-items:center; justify-content:center; padding:10px 15px; border:3px solid rgba(15,119,118,.38); border-radius:999px; background:var(--paper); font-weight:950; box-shadow:0 7px 0 rgba(18,51,61,.12); }
-    .button.primary { color:#fffdf8; background:#1b677a; border-color:#1b677a; }
-    .button.print { background:var(--yellow); border-color:rgba(246,163,74,.72); }
-    .button.soft { background:var(--mint); }
-    .section { margin-top:26px; padding:28px; }
-    .section-head { display:flex; align-items:end; justify-content:space-between; gap:18px; margin-bottom:18px; }
-    h2 { margin-bottom:0; color:#0b6768; font-size:1.85rem; line-height:1.12; }
-    .section-note { max-width:560px; margin-bottom:0; color:var(--muted); font-family:"Trebuchet MS",Arial,sans-serif; font-weight:700; line-height:1.38; }
-    .timeline { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
-    .phase-card, .day-card, .check-card { border:3px solid var(--line); border-radius:22px; background:rgba(255,253,248,.94); overflow:hidden; }
-    .phase-card { min-height:210px; padding:20px; }
-    .phase-card strong { display:block; margin-bottom:8px; color:#8b4513; font-size:.96rem; text-transform:uppercase; }
-    .phase-card h3 { margin-bottom:10px; color:#0b6768; font-size:1.35rem; }
-    .phase-card p, .day-header p, .check-card p { margin-bottom:0; color:#213f45; line-height:1.4; font-family:"Trebuchet MS",Arial,sans-serif; font-weight:700; }
-    .days { display:grid; gap:20px; }
-    .day-header { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:18px; align-items:center; padding:22px 24px; color:#fffdf8; background:#1b677a; }
-    .day-header h3 { margin-bottom:6px; font-size:1.5rem; }
-    .day-header p { color:rgba(255,253,248,.92); }
-    .duration { display:inline-grid; min-width:92px; min-height:54px; place-items:center; padding:8px 12px; border-radius:16px; color:#592a08; background:var(--yellow); font-weight:950; }
-    .day-body { display:grid; gap:18px; padding:22px 24px 24px; }
-    .resource-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
-    .check-card { padding:20px; }
-    .check-card h3 { margin-bottom:8px; color:#1d5c94; }
-    @media (max-width: 840px) { .timeline, .resource-grid { grid-template-columns:1fr; } .day-header { grid-template-columns:1fr; } .hero { padding:30px; } }
+    .shell { width:min(1120px, calc(100vw - 30px)); margin:0 auto; padding:34px 0 54px; }
+    .hero, .pdf-card { border:4px solid rgba(15,119,118,.28); border-radius:24px; background:rgba(255,253,248,.95); box-shadow:0 14px 30px rgba(18,51,61,.12); }
+    .hero { position:relative; overflow:hidden; padding:34px; margin-bottom:22px; }
+    .hero-asset-stack { position:absolute; right:34px; bottom:22px; width:230px; height:160px; }
+    .hero-asset-stack img { position:absolute; object-fit:contain; border:4px solid #12333d; border-radius:18px; background:#e7f3ff; box-shadow:0 9px 0 rgba(18,51,61,.12); }
+    .hero-asset-stack .paper { right:0; top:0; width:135px; height:96px; transform:rotate(8deg); }
+    .hero-asset-stack .sticker { left:0; top:32px; width:130px; height:94px; transform:rotate(-8deg); }
+    .hero-asset-stack .beads { right:14px; bottom:0; width:130px; height:88px; transform:rotate(-4deg); }
+    .eyebrow { display:inline-flex; padding:8px 14px; border-radius:999px; color:#fffdf8; background:var(--orange); border:3px solid #fffdf8; font-weight:950; box-shadow:0 6px 0 rgba(29,92,148,.22); }
+    h1 { max-width:760px; margin:18px 0 10px; color:#0a6f70; font-size:clamp(2.2rem,5vw,4.2rem); line-height:1.04; text-shadow:3px 3px #fffdf8,0 8px 0 rgba(18,51,61,.10); }
+    p { max-width:720px; margin:0; font-family:"Trebuchet MS",Arial,sans-serif; font-size:1.08rem; line-height:1.45; font-weight:650; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .pdf-card { display:grid; gap:8px; min-height:116px; padding:18px; }
+    .pdf-card strong { color:#0a6f70; font-size:1.28rem; line-height:1.15; }
+    .pdf-card span { color:#49646b; font-family:"Trebuchet MS",Arial,sans-serif; font-size:.94rem; line-height:1.25; overflow-wrap:anywhere; }
+    .back { display:inline-flex; margin-bottom:16px; padding:10px 15px; border-radius:999px; background:#1b677a; color:#fffdf8; font-weight:950; box-shadow:0 7px 0 rgba(18,51,61,.14); }
+    @media(max-width:880px) { .grid { grid-template-columns:1fr; } .hero-asset-stack { display:none; } }
   </style>
 </head>
 <body>
   <main class="shell">
+    <a class="back" href="../index.html">Kembali ke Hub</a>
     <section class="hero">
-      <p class="eyebrow">Math Champs Holiday Program</p>
-      <h1>Teaching Kit Offline - Toys & Craft</h1>
-      <p class="lead">Paket bahan ajar lengkap untuk 3 pertemuan offline, masing-masing 100 menit. Tema ini mengajak siswa SD membuat produk kreatif dari stiker, manik-manik/beads, atau kertas warna sambil belajar matematika bisnis sederhana.</p>
-      <div class="quick-actions">
-        <a class="button primary" href="#materi">Lihat Materi</a>
-        <a class="button" href="worksheet-viewer.html">Worksheet Viewer</a>
-        <a class="button print" href="worksheet-siswa-toys-craft.pdf">Worksheet Siswa</a>
-        <a class="button" href="learning-kit-kartu-bahan-utama.pdf">Learning Kit Kartu</a>
-        <a class="button" href="spin-wheel-day1.html">Spin Wheel Cadangan</a>
-      </div>
+      <p class="eyebrow">PDF Cadangan</p>
+      <h1>Folder PDF - Toys & Craft</h1>
+      <p>Semua file PDF untuk backup mengajar, print worksheet, test, kunci jawaban, dan learning kit.</p>
       <div class="hero-asset-stack" aria-hidden="true">
-        <img class="paper" src="assets/icon-paper.png" alt="">
-        <img class="sticker" src="assets/icon-sticker.png" alt="">
-        <img class="beads" src="assets/icon-beads.png" alt="">
+        <img class="paper" src="../assets/icon-paper.png" alt="">
+        <img class="sticker" src="../assets/icon-sticker.png" alt="">
+        <img class="beads" src="../assets/icon-beads.png" alt="">
       </div>
     </section>
-    <section class="section">
-      <div class="section-head"><h2>Alur Program</h2><p class="section-note">Gunakan ini untuk briefing guru dan menjelaskan progres belajar ke cabang.</p></div>
-      <div class="timeline">
-        <article class="phase-card"><strong>Pertemuan 1</strong><h3>Learn & Ideation</h3><p>Buka blind box, pilih bahan utama, cari ide produk, target pembeli, brand, logo, slogan, dan harga awal.</p></article>
-        <article class="phase-card"><strong>Pertemuan 2</strong><h3>Build Your Business Plan</h3><p>Hitung modal, modal per produk, harga jual final, packaging, promosi, display, dan rencana produksi.</p></article>
-        <article class="phase-card"><strong>Pertemuan 3</strong><h3>Launch & Market Day</h3><p>Buka booth, jual produk kreatif, catat penjualan, hitung laba/rugi, dan refleksi entrepreneur.</p></article>
-      </div>
-    </section>
-    <section class="section" id="materi">
-      <div class="section-head"><h2>Materi Per Pertemuan</h2><p class="section-note">Setiap deck punya menu Catatan Guru dan PDF cadangan.</p></div>
-      <div class="days">
-            <article class="day-card">
-              <div class="day-header">
-                <div><h3>Pertemuan 1: Learn & Ideation</h3><p>Memilih bahan utama, membuat ide produk, target pembeli, brand, logo, slogan, dan harga awal.</p></div>
-                <span class="duration">100 menit</span>
-              </div>
-              <div class="day-body">
-                <div class="mini-links">
-                  <a class="button primary" href="pertemuan-1-teacher-deck.html">Buka Deck Guru</a>
-                  <a class="button print" href="pertemuan-1-teacher-deck.pdf">PDF Deck</a>
-                  
-          <a class="button soft" href="pre-test-1.pdf">Pre Test 1</a>
-          <a class="button soft" href="post-test-1.pdf">Post Test 1</a>
-          <a class="button soft" href="kunci-jawaban-1.pdf">Kunci 1</a>
-        
-                </div>
-              </div>
-            </article>
-            
-            <article class="day-card">
-              <div class="day-header">
-                <div><h3>Pertemuan 2: Build Your Business Plan</h3><p>Menghitung modal, menentukan harga final, membuat packaging, promosi, display, dan production planner.</p></div>
-                <span class="duration">100 menit</span>
-              </div>
-              <div class="day-body">
-                <div class="mini-links">
-                  <a class="button primary" href="pertemuan-2-teacher-deck.html">Buka Deck Guru</a>
-                  <a class="button print" href="pertemuan-2-teacher-deck.pdf">PDF Deck</a>
-                  
-          <a class="button soft" href="pre-test-2.pdf">Pre Test 2</a>
-          <a class="button soft" href="post-test-2.pdf">Post Test 2</a>
-          <a class="button soft" href="kunci-jawaban-2.pdf">Kunci 2</a>
-        
-                </div>
-              </div>
-            </article>
-            
-            <article class="day-card">
-              <div class="day-header">
-                <div><h3>Pertemuan 3: Launch & Market Day</h3><p>Membuka booth, menjual produk kreatif, mencatat penjualan, menghitung laba/rugi, dan refleksi.</p></div>
-                <span class="duration">100 menit</span>
-              </div>
-              <div class="day-body">
-                <div class="mini-links">
-                  <a class="button primary" href="pertemuan-3-teacher-deck.html">Buka Deck Guru</a>
-                  <a class="button print" href="pertemuan-3-teacher-deck.pdf">PDF Deck</a>
-                  
-          <a class="button soft" href="pre-test-3.pdf">Pre Test 3</a>
-          <a class="button soft" href="post-test-3.pdf">Post Test 3</a>
-          <a class="button soft" href="kunci-jawaban-3.pdf">Kunci 3</a>
-        
-                </div>
-              </div>
-            </article>
-            </div>
-    </section>
-    <section class="section">
-      <div class="section-head"><h2>Resource Tambahan</h2><p class="section-note">File berikut membantu guru menyiapkan kelas offline.</p></div>
-      <div class="resource-grid">
-        <article class="check-card"><h3>Worksheet Siswa</h3><p>Print sesuai jumlah siswa. Worksheet yang sama dipakai dari pertemuan 1 sampai 3.</p><p><a class="button print" href="worksheet-siswa-toys-craft.pdf">Download PDF Worksheet</a></p></article>
-        <article class="check-card"><h3>Worksheet Viewer</h3><p>Halaman HTML untuk menampilkan setiap halaman worksheet di layar/proyektor saat guru menjelaskan instruksi.</p><p><a class="button" href="worksheet-viewer.html">Buka Viewer</a></p></article>
-        <article class="check-card"><h3>Learning Kit Kartu Bahan</h3><p>Print, gunting, dan masukkan ke blind box. 1 halaman berisi 12 kartu bahan utama.</p><p><a class="button print" href="learning-kit-kartu-bahan-utama.pdf">Download Kartu</a></p></article>
-        <article class="check-card"><h3>Spin Wheel Cadangan</h3><p>Dipakai jika kartu belum tersedia. Pilihan bahan: stiker, manik-manik/beads, kertas warna.</p><p><a class="button" href="spin-wheel-day1.html">Buka Spin Wheel</a></p></article>
-        <article class="check-card"><h3>Bank Soal Guru</h3><p>Berisi semua soal pre/post test, kunci jawaban, dan pembahasan singkat untuk guru/admin.</p><p><a class="button" href="question-bank.html">Buka Bank Soal</a></p></article>
-        <article class="check-card"><h3>Rubrik Market Day</h3><p>Rubrik feedback untuk ide produk, booth, sales script, dan matematika bisnis sederhana.</p><p><a class="button" href="rubrik-market-day.html">Buka Rubrik</a> <a class="button print" href="rubrik-market-day.pdf">PDF</a></p></article>
-        <article class="check-card"><h3>Jalur Basic & Challenge</h3><p>Panduan membedakan bantuan untuk siswa SD kecil sampai SMP, termasuk solusi jika hitungan atau produk terasa sulit.</p><p><a class="button" href="jalur-basic-challenge.html">Buka Panduan</a> <a class="button print" href="jalur-basic-challenge.pdf">PDF</a></p></article>
-        <article class="check-card"><h3>Panduan Orang Tua</h3><p>Ringkasan tujuan program, tugas rumah, perlengkapan, dan peran orang tua saat mendampingi produk craft di rumah.</p><p><a class="button" href="panduan-orang-tua.html">Buka Panduan</a> <a class="button print" href="panduan-orang-tua.pdf">PDF</a></p></article>
-        <article class="check-card"><h3>Market Day Printable Kit</h3><p>Role card, kupon/poin transaksi, price tag, label produk, dan format catatan penjualan sederhana.</p><p><a class="button" href="market-day-printable-kit.html">Buka Kit</a> <a class="button print" href="market-day-printable-kit.pdf">PDF</a></p></article>
-        <article class="check-card"><h3>Rubrik Student Report</h3><p>Aspek penilaian terukur untuk kreativitas, mathpreneur, komunikasi, tanggung jawab, dan sikap belajar.</p><p><a class="button" href="rubrik-student-report.html">Buka Rubrik</a> <a class="button print" href="rubrik-student-report.pdf">PDF</a></p></article>
-        <article class="check-card"><h3>Panduan Rekap Guru</h3><p>Checklist post-class: input nilai test, evaluasi harian, foto kelas, dan catatan kendala program.</p><p><a class="button" href="panduan-rekap-guru.html">Buka Panduan</a> <a class="button print" href="panduan-rekap-guru.pdf">PDF</a></p></article>
-        <article class="check-card"><h3>Folder PDF</h3><p>Berisi salinan PDF deck, test, kunci, learning kit, dan worksheet untuk backup/GDrive.</p><p><a class="button" href="pdf/">Buka Folder PDF</a></p></article>
-      </div>
-    </section>
+    <section class="grid"><a class="pdf-card" href="worksheet-siswa-toys-craft.pdf"><strong>Worksheet Siswa</strong><span>worksheet-siswa-toys-craft.pdf</span></a>
+<a class="pdf-card" href="learning-kit-kartu-bahan-utama.pdf"><strong>Learning Kit Kartu Bahan</strong><span>learning-kit-kartu-bahan-utama.pdf</span></a>
+<a class="pdf-card" href="pertemuan-1-teacher-deck.pdf"><strong>Deck Pertemuan 1</strong><span>pertemuan-1-teacher-deck.pdf</span></a>
+<a class="pdf-card" href="pertemuan-2-teacher-deck.pdf"><strong>Deck Pertemuan 2</strong><span>pertemuan-2-teacher-deck.pdf</span></a>
+<a class="pdf-card" href="pertemuan-3-teacher-deck.pdf"><strong>Deck Pertemuan 3</strong><span>pertemuan-3-teacher-deck.pdf</span></a>
+<a class="pdf-card" href="pre-test-1.pdf"><strong>Pre Test 1</strong><span>pre-test-1.pdf</span></a>
+<a class="pdf-card" href="post-test-1.pdf"><strong>Post Test 1</strong><span>post-test-1.pdf</span></a>
+<a class="pdf-card" href="kunci-jawaban-1.pdf"><strong>Kunci Jawaban 1</strong><span>kunci-jawaban-1.pdf</span></a>
+<a class="pdf-card" href="pre-test-2.pdf"><strong>Pre Test 2</strong><span>pre-test-2.pdf</span></a>
+<a class="pdf-card" href="post-test-2.pdf"><strong>Post Test 2</strong><span>post-test-2.pdf</span></a>
+<a class="pdf-card" href="kunci-jawaban-2.pdf"><strong>Kunci Jawaban 2</strong><span>kunci-jawaban-2.pdf</span></a>
+<a class="pdf-card" href="pre-test-3.pdf"><strong>Pre Test 3</strong><span>pre-test-3.pdf</span></a>
+<a class="pdf-card" href="post-test-3.pdf"><strong>Post Test 3</strong><span>post-test-3.pdf</span></a>
+<a class="pdf-card" href="kunci-jawaban-3.pdf"><strong>Kunci Jawaban 3</strong><span>kunci-jawaban-3.pdf</span></a>
+<a class="pdf-card" href="rubrik-market-day.pdf"><strong>Rubrik Market Day</strong><span>rubrik-market-day.pdf</span></a>
+<a class="pdf-card" href="jalur-basic-challenge.pdf"><strong>Jalur Basic & Challenge</strong><span>jalur-basic-challenge.pdf</span></a>
+<a class="pdf-card" href="panduan-orang-tua.pdf"><strong>Panduan Orang Tua</strong><span>panduan-orang-tua.pdf</span></a>
+<a class="pdf-card" href="market-day-printable-kit.pdf"><strong>Market Day Printable Kit</strong><span>market-day-printable-kit.pdf</span></a>
+<a class="pdf-card" href="rubrik-student-report.pdf"><strong>Rubrik Student Report</strong><span>rubrik-student-report.pdf</span></a>
+<a class="pdf-card" href="panduan-rekap-guru.pdf"><strong>Panduan Rekap Guru</strong><span>panduan-rekap-guru.pdf</span></a></section>
   </main>
-  <script>
-    document.addEventListener("click", function (event) {
-      const link = event.target.closest("a[href]");
-      if (!link) return;
-      const href = link.getAttribute("href");
-      if (!href) return;
-      if (href.startsWith("#")) {
-        const target = document.querySelector(href);
-        if (target) {
-          event.preventDefault();
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-          history.replaceState(null, "", href);
-        }
-        return;
-      }
-      if (href.startsWith("javascript:")) return;
-      event.preventDefault();
-      window.location.href = new URL(href, window.location.href).href;
-    }, true);
-  </script>
 </body>
 </html>
