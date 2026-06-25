@@ -9,44 +9,20 @@
       "pertemuan-2-teacher-deck.html",
       "pertemuan-3-teacher-deck.html"
     ],
-    "deck_pdfs": [
-      "pertemuan-1-teacher-deck.pdf",
-      "pertemuan-2-teacher-deck.pdf",
-      "pertemuan-3-teacher-deck.pdf"
-    ],
-    "tests": [
-      "pre-test-1.pdf",
-      "pre-test-2.pdf",
-      "pre-test-3.pdf",
-      "post-test-1.pdf",
-      "post-test-2.pdf",
-      "post-test-3.pdf"
-    ],
-    "answer_keys": [
-      "kunci-jawaban-1.pdf",
-      "kunci-jawaban-2.pdf",
-      "kunci-jawaban-3.pdf"
-    ],
-    "learning_kit": "learning-kit-kartu-bahan-utama.pdf",
     "spin_wheel": "spin-wheel-day1.html",
-    "worksheet": "worksheet-siswa-toys-craft.pdf",
     "worksheet_viewer": "worksheet-viewer.html",
     "question_bank": "question-bank.html",
     "market_day_rubric": [
-      "rubrik-market-day.html",
-      "rubrik-market-day.pdf"
+      "rubrik-market-day.html"
     ],
     "learning_paths": [
-      "jalur-basic-challenge.html",
-      "jalur-basic-challenge.pdf"
+      "jalur-basic-challenge.html"
     ],
     "parent_info": [
-      "panduan-orang-tua.html",
-      "panduan-orang-tua.pdf"
+      "panduan-orang-tua.html"
     ],
     "teacher_recap_guide": [
-      "panduan-rekap-guru.html",
-      "panduan-rekap-guru.pdf"
+      "panduan-rekap-guru.html"
     ]
   }
 }
