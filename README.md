@@ -20,7 +20,4 @@ Folder ini siap di-upload ke GitHub Pages.
 - `rubrik-market-day.html` / `rubrik-market-day.pdf` - rubrik feedback Market Day.
 - `jalur-basic-challenge.html` / `jalur-basic-challenge.pdf` - panduan diferensiasi untuk SD kecil sampai SMP.
 - `panduan-orang-tua.html` / `panduan-orang-tua.pdf` - panduan ringkas untuk orang tua.
-- `market-day-printable-kit.html` / `market-day-printable-kit.pdf` - role card, kupon, price tag, label, dan sales record.
-- `rubrik-student-report.html` / `rubrik-student-report.pdf` - rubrik student report.
 - `panduan-rekap-guru.html` / `panduan-rekap-guru.pdf` - checklist post-class guru offline.
-- `pdf/` - kumpulan PDF untuk backup atau upload ke Google Drive.
