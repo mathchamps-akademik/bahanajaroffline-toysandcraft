@@ -13,6 +13,14 @@ Folder ini siap di-upload ke GitHub Pages.
 - `pertemuan-1-teacher-deck.html` sampai `pertemuan-3-teacher-deck.html` - deck guru.
 - `pre-test-*.pdf`, `post-test-*.pdf`, `kunci-jawaban-*.pdf` - test cetak dan kunci.
 - `worksheet-siswa-toys-craft.pdf` - worksheet siswa.
+- `worksheet-viewer.html` - viewer worksheet per halaman untuk layar/proyektor.
 - `learning-kit-kartu-bahan-utama.pdf` - kartu blind box bahan utama.
 - `spin-wheel-day1.html` - spin wheel cadangan.
+- `question-bank.html` - bank soal, kunci, dan pembahasan singkat untuk guru.
+- `rubrik-market-day.html` / `rubrik-market-day.pdf` - rubrik feedback Market Day.
+- `jalur-basic-challenge.html` / `jalur-basic-challenge.pdf` - panduan diferensiasi untuk SD kecil sampai SMP.
+- `panduan-orang-tua.html` / `panduan-orang-tua.pdf` - panduan ringkas untuk orang tua.
+- `market-day-printable-kit.html` / `market-day-printable-kit.pdf` - role card, kupon, price tag, label, dan sales record.
+- `rubrik-student-report.html` / `rubrik-student-report.pdf` - rubrik student report.
+- `panduan-rekap-guru.html` / `panduan-rekap-guru.pdf` - checklist post-class guru offline.
 - `pdf/` - kumpulan PDF untuk backup atau upload ke Google Drive.

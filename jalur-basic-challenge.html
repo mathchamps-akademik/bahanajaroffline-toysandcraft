@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jalur Basic &amp; Challenge</title>
+  <style>
+:root { --ink:#12333d; --muted:#49646b; --teal:#0f7776; --blue:#285f9e; --sky:#a8def0; --mint:#dcefd7; --yellow:#ffd769; --orange:#f6a34a; --paper:#fffdf8; --line:rgba(15,119,118,.30); --shadow:0 18px 45px rgba(18,51,61,.14); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; color:var(--ink); font-family:"Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif; background:linear-gradient(135deg,#fff4bf,#dcefd7 45%,#a8def0); }
+a { color:inherit; text-decoration:none; }
+.shell { width:min(1180px, calc(100vw - 32px)); margin:0 auto; padding:30px 0 54px; }
+.hero, .section, .card { border:4px solid var(--line); border-radius:24px; background:rgba(255,253,248,.95); box-shadow:var(--shadow); }
+.hero { padding:34px; margin-bottom:22px; position:relative; overflow:hidden; }
+.eyebrow { display:inline-flex; padding:8px 14px; border-radius:999px; color:#fffdf8; background:var(--orange); border:3px solid #fffdf8; font-weight:950; text-transform:uppercase; box-shadow:0 6px 0 rgba(29,92,148,.22); }
+h1,h2,h3,p { margin-top:0; }
+h1 { max-width:860px; margin:16px 0 10px; color:#0a6f70; font-size:clamp(2.25rem,5vw,4.4rem); line-height:1.04; text-shadow:3px 3px #fffdf8,0 8px 0 rgba(18,51,61,.10); }
+h2 { margin-bottom:12px; color:#0a6f70; font-size:1.65rem; line-height:1.12; }
+h3 { margin-bottom:8px; color:#1d5c94; font-size:1.24rem; }
+p, li, td, th { font-family:"Trebuchet MS",Arial,sans-serif; font-size:1.02rem; line-height:1.45; font-weight:650; }
+.lead { max-width:760px; color:#213f45; font-size:1.12rem; }
+.button-row, .tabs { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+.button { display:inline-flex; min-height:42px; align-items:center; justify-content:center; padding:9px 14px; border:3px solid rgba(15,119,118,.38); border-radius:999px; background:var(--paper); font-weight:950; box-shadow:0 7px 0 rgba(18,51,61,.12); cursor:pointer; }
+.button.primary { color:#fffdf8; background:#1b677a; border-color:#1b677a; }
+.button.print { background:var(--yellow); border-color:rgba(246,163,74,.72); }
+.section { padding:26px; margin-top:22px; }
+.grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.three { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.card { padding:20px; box-shadow:0 10px 0 rgba(18,51,61,.08), 0 16px 28px rgba(18,51,61,.08); }
+table { width:100%; border-collapse:collapse; overflow:hidden; border-radius:18px; background:white; }
+th, td { padding:13px 14px; border-bottom:2px solid rgba(15,119,118,.18); text-align:left; vertical-align:top; }
+th { color:#0a6f70; background:rgba(220,239,215,.86); font-family:"Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif; }
+.worksheet-frame { display:grid; grid-template-columns:260px minmax(0,1fr); gap:20px; align-items:start; }
+.page-list { position:sticky; top:14px; display:grid; gap:8px; }
+.page-list a { padding:10px 12px; border:2px solid rgba(15,119,118,.28); border-radius:12px; background:#fffdf8; font-weight:950; }
+.sheet-page { display:grid; gap:10px; padding:14px; border:4px solid rgba(15,119,118,.24); border-radius:22px; background:#fffdf8; margin-bottom:18px; box-shadow:0 10px 22px rgba(18,51,61,.10); }
+.sheet-page img { width:100%; border-radius:14px; border:2px solid rgba(18,51,61,.12); display:block; }
+.answer { display:inline-flex; min-width:36px; height:36px; align-items:center; justify-content:center; border-radius:10px; color:#fffdf8; background:#1b677a; font-weight:950; }
+@media(max-width:880px){ .grid,.three,.worksheet-frame{grid-template-columns:1fr;} .page-list{position:static;} }
+</style>
+</head>
+<body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">Pegangan Guru</p>
+        <h1>Jalur Basic & Challenge</h1>
+        <p class="lead">Panduan membedakan bantuan untuk siswa SD kecil sampai SMP agar semua tetap bisa mengikuti program yang sama.</p>
+        <div class="button-row"><a class="button primary" href="index.html">Kembali ke Hub</a><a class="button print" href="jalur-basic-challenge.pdf">PDF Panduan</a></div>
+      </section>
+      <section class="section">
+        <table>
+          <thead><tr><th>Pertemuan</th><th>Basic untuk SD Kecil</th><th>Challenge untuk Siswa Lebih Siap</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Pilih 1 ide produk, gambar contoh, harga awal pakai bilangan mudah.</td><td>Buat variasi produk, bandingkan target pembeli, pakai data survei teman.</td></tr>
+            <tr><td>2</td><td>Hitung modal dengan uang mainan/gambar, boleh kalkulator, fokus dibagi rata.</td><td>Hitung bundle, target balik modal, dan bandingkan dua pilihan harga.</td></tr>
+            <tr><td>3</td><td>Catat transaksi dengan turus, hitung 1 produk utama, dibantu laba/rugi.</td><td>Hitung beberapa produk, evaluasi target, usulkan strategi perbaikan.</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="section">
+        <h2>Jika Terjadi di Kelas...</h2>
+        <div class="grid">
+          <div class="card"><h3>Hitungan terlalu sulit</h3><p>Ganti contoh ke bilangan mudah, misalnya Rp10.000 dibagi 2. Setelah konsep paham, baru kembali ke angka asli.</p></div>
+          <div class="card"><h3>Siswa lupa membawa produk</h3><p>Ubah menjadi simulasi booth: pakai gambar produk di worksheet, lalu tetap latihan pitch dan hitung contoh data.</p></div>
+          <div class="card"><h3>Produk belum selesai</h3><p>Fokus pada final touch kecil: label, price tag, atau display. Produk tidak harus sempurna untuk belajar menjual.</p></div>
+          <div class="card"><h3>Siswa malu presentasi</h3><p>Mulai dari pasangan, lalu kelompok kecil. Guru boleh memberi kalimat awal yang tinggal dilanjutkan siswa.</p></div>
+        </div>
+      </section>
+    </main>
+    </body>
+</html>

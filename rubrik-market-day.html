@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rubrik Market Day</title>
+  <style>
+:root { --ink:#12333d; --muted:#49646b; --teal:#0f7776; --blue:#285f9e; --sky:#a8def0; --mint:#dcefd7; --yellow:#ffd769; --orange:#f6a34a; --paper:#fffdf8; --line:rgba(15,119,118,.30); --shadow:0 18px 45px rgba(18,51,61,.14); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; color:var(--ink); font-family:"Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif; background:linear-gradient(135deg,#fff4bf,#dcefd7 45%,#a8def0); }
+a { color:inherit; text-decoration:none; }
+.shell { width:min(1180px, calc(100vw - 32px)); margin:0 auto; padding:30px 0 54px; }
+.hero, .section, .card { border:4px solid var(--line); border-radius:24px; background:rgba(255,253,248,.95); box-shadow:var(--shadow); }
+.hero { padding:34px; margin-bottom:22px; position:relative; overflow:hidden; }
+.eyebrow { display:inline-flex; padding:8px 14px; border-radius:999px; color:#fffdf8; background:var(--orange); border:3px solid #fffdf8; font-weight:950; text-transform:uppercase; box-shadow:0 6px 0 rgba(29,92,148,.22); }
+h1,h2,h3,p { margin-top:0; }
+h1 { max-width:860px; margin:16px 0 10px; color:#0a6f70; font-size:clamp(2.25rem,5vw,4.4rem); line-height:1.04; text-shadow:3px 3px #fffdf8,0 8px 0 rgba(18,51,61,.10); }
+h2 { margin-bottom:12px; color:#0a6f70; font-size:1.65rem; line-height:1.12; }
+h3 { margin-bottom:8px; color:#1d5c94; font-size:1.24rem; }
+p, li, td, th { font-family:"Trebuchet MS",Arial,sans-serif; font-size:1.02rem; line-height:1.45; font-weight:650; }
+.lead { max-width:760px; color:#213f45; font-size:1.12rem; }
+.button-row, .tabs { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+.button { display:inline-flex; min-height:42px; align-items:center; justify-content:center; padding:9px 14px; border:3px solid rgba(15,119,118,.38); border-radius:999px; background:var(--paper); font-weight:950; box-shadow:0 7px 0 rgba(18,51,61,.12); cursor:pointer; }
+.button.primary { color:#fffdf8; background:#1b677a; border-color:#1b677a; }
+.button.print { background:var(--yellow); border-color:rgba(246,163,74,.72); }
+.section { padding:26px; margin-top:22px; }
+.grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.three { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.card { padding:20px; box-shadow:0 10px 0 rgba(18,51,61,.08), 0 16px 28px rgba(18,51,61,.08); }
+table { width:100%; border-collapse:collapse; overflow:hidden; border-radius:18px; background:white; }
+th, td { padding:13px 14px; border-bottom:2px solid rgba(15,119,118,.18); text-align:left; vertical-align:top; }
+th { color:#0a6f70; background:rgba(220,239,215,.86); font-family:"Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif; }
+.worksheet-frame { display:grid; grid-template-columns:260px minmax(0,1fr); gap:20px; align-items:start; }
+.page-list { position:sticky; top:14px; display:grid; gap:8px; }
+.page-list a { padding:10px 12px; border:2px solid rgba(15,119,118,.28); border-radius:12px; background:#fffdf8; font-weight:950; }
+.sheet-page { display:grid; gap:10px; padding:14px; border:4px solid rgba(15,119,118,.24); border-radius:22px; background:#fffdf8; margin-bottom:18px; box-shadow:0 10px 22px rgba(18,51,61,.10); }
+.sheet-page img { width:100%; border-radius:14px; border:2px solid rgba(18,51,61,.12); display:block; }
+.answer { display:inline-flex; min-width:36px; height:36px; align-items:center; justify-content:center; border-radius:10px; color:#fffdf8; background:#1b677a; font-weight:950; }
+@media(max-width:880px){ .grid,.three,.worksheet-frame{grid-template-columns:1fr;} .page-list{position:static;} }
+</style>
+</head>
+<body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">Rubrik Guru</p>
+        <h1>Rubrik Market Day - Toys & Craft</h1>
+        <p class="lead">Gunakan rubrik ini untuk memberi feedback yang spesifik, hangat, dan mudah dipahami siswa SD saat Market Day.</p>
+        <div class="button-row"><a class="button primary" href="index.html">Kembali ke Hub</a><a class="button print" href="rubrik-market-day.pdf">PDF Rubrik</a></div>
+      </section>
+      <section class="section">
+        <table>
+          <thead><tr><th>Aspek</th><th>Mulai Berkembang</th><th>Baik</th><th>Sangat Baik</th></tr></thead>
+          <tbody>
+            <tr><td>Ide Produk</td><td>Produk masih perlu dibantu agar sesuai bahan.</td><td>Produk sesuai bahan dan aman dibuat.</td><td>Produk sesuai bahan, punya fungsi, dan target pembeli jelas.</td></tr>
+            <tr><td>Brand & Label</td><td>Nama produk/brand belum jelas terbaca.</td><td>Nama produk, brand, dan harga sudah terlihat.</td><td>Label rapi, menarik, dan mudah dipahami pembeli.</td></tr>
+            <tr><td>Booth/Display</td><td>Produk masih kurang rapi atau price tag belum terlihat.</td><td>Produk tertata dan price tag terlihat.</td><td>Display menarik, rapi, dan memudahkan pembeli memilih.</td></tr>
+            <tr><td>Sales Script</td><td>Masih perlu dibantu menjelaskan produk.</td><td>Bisa menyebut nama produk, keunggulan, dan harga.</td><td>Pitch jelas, ramah, percaya diri, dan sesuai waktu.</td></tr>
+            <tr><td>Mathpreneur</td><td>Masih perlu banyak bantuan menghitung.</td><td>Bisa menjelaskan modal, harga, dan total penjualan sederhana.</td><td>Bisa menjelaskan laba/rugi dan refleksi perbaikan.</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="section">
+        <h2>Format Feedback Singkat</h2>
+        <div class="three">
+          <div class="card"><h3>Yang Sudah Baik</h3><p>"Kamu sudah menjelaskan produk dengan suara jelas."</p></div>
+          <div class="card"><h3>Yang Bisa Ditingkatkan</h3><p>"Price tag bisa dibuat lebih besar agar pembeli cepat melihat harga."</p></div>
+          <div class="card"><h3>Apresiasi</h3><p>"Terima kasih sudah berani mencoba dan menghitung hasil jualanmu."</p></div>
+        </div>
+      </section>
+    </main>
+    </body>
+</html>

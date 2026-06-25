@@ -29,6 +29,32 @@
     ],
     "learning_kit": "learning-kit-kartu-bahan-utama.pdf",
     "spin_wheel": "spin-wheel-day1.html",
-    "worksheet": "worksheet-siswa-toys-craft.pdf"
+    "worksheet": "worksheet-siswa-toys-craft.pdf",
+    "worksheet_viewer": "worksheet-viewer.html",
+    "question_bank": "question-bank.html",
+    "market_day_rubric": [
+      "rubrik-market-day.html",
+      "rubrik-market-day.pdf"
+    ],
+    "learning_paths": [
+      "jalur-basic-challenge.html",
+      "jalur-basic-challenge.pdf"
+    ],
+    "parent_info": [
+      "panduan-orang-tua.html",
+      "panduan-orang-tua.pdf"
+    ],
+    "market_day_printable_kit": [
+      "market-day-printable-kit.html",
+      "market-day-printable-kit.pdf"
+    ],
+    "student_report_rubric": [
+      "rubrik-student-report.html",
+      "rubrik-student-report.pdf"
+    ],
+    "teacher_recap_guide": [
+      "panduan-rekap-guru.html",
+      "panduan-rekap-guru.pdf"
+    ]
   }
 }
