@@ -1,16 +1,13 @@
-# Teaching Kit Offline Toys & Craft - Lite GitHub Version
+# Teaching Kit Offline Toys & Craft - GitHub Pages
 
-Folder ini dibuat ringan untuk GitHub Pages.
+Folder ini siap di-upload ke GitHub Pages.
 
-## Penting
-- Upload semua isi folder ini ke root repository.
-- Tidak ada folder `assets/`; semua gambar sudah ada di root folder agar tidak gagal load.
-- File PDF tidak dimasukkan ke GitHub. PDF tersedia di folder GDrive terpisah.
+## Cara upload
+1. Upload semua isi folder ini ke root repository `bahanajaroffline-toysandcraft`.
+2. Jangan upload folder pembungkusnya, upload isi file/folder di dalamnya.
+3. Pastikan `index.html` berada di root repository.
 
-## Isi utama
-- `index.html` - hub utama.
-- `pertemuan-1-teacher-deck.html` sampai `pertemuan-3-teacher-deck.html` - deck guru.
-- `worksheet-viewer.html` - viewer worksheet.
-- `spin-wheel-day1.html` - spin wheel.
-- `question-bank.html` - bank soal dan kunci untuk guru.
-- File gambar `.png`/`.jpg` di root - aset yang dipakai halaman HTML.
+## Catatan struktur
+- Semua gambar dibuat flat di root folder agar tidak gagal load di GitHub Pages.
+- File PDF juga ada di root folder agar tombol PDF Deck, Pre Test, Post Test, dan Kunci Jawaban bisa dibuka seperti bahan ajar F&B.
+- Halaman khusus kumpulan PDF tidak ditampilkan di hub; PDF untuk GDrive tersedia di folder terpisah.

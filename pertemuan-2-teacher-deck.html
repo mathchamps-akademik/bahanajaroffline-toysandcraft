@@ -115,6 +115,55 @@ button { font: inherit; }
 .slide-art .paper { right: 0; top: 0; width: 138px; height: 98px; transform: rotate(8deg); }
 .slide-art .sticker { left: 0; top: 34px; width: 132px; height: 96px; transform: rotate(-8deg); }
 .slide-art .beads { right: 16px; bottom: 0; width: 132px; height: 92px; transform: rotate(-4deg); }
+.hp-deck-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hp-deck-bg img {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 0 rgba(18,51,61,.08));
+}
+.hp-deck-bg .hp-left {
+  left: -58px;
+  bottom: -126px;
+  width: 235px;
+  opacity: .16;
+}
+.hp-deck-bg .hp-right {
+  right: -50px;
+  top: 78px;
+  width: 220px;
+  opacity: .14;
+}
+.hp-deck-bg .hp-kids {
+  display: none;
+}
+.cover .hp-deck-bg .hp-left,
+.plain .hp-deck-bg .hp-left {
+  left: -18px;
+  bottom: -88px;
+  width: 285px;
+  opacity: .28;
+}
+.cover .hp-deck-bg .hp-right,
+.plain .hp-deck-bg .hp-right {
+  right: -10px;
+  top: 54px;
+  width: 270px;
+  opacity: .22;
+}
+.cover .hp-deck-bg .hp-kids {
+  display: block;
+  left: 42%;
+  bottom: -12px;
+  width: 470px;
+  opacity: .20;
+}
 .cover::before, .cover::after, .plain::before, .plain::after { display: none; }
 .cover .slide-art, .plain .slide-art { display: none; }
 h1, h2, h3, p { margin-top: 0; }
@@ -708,6 +757,11 @@ td:first-child, th:first-child { white-space: nowrap; }
   <main class="deck-shell">
     <section class="stage">
       <article class="slide is-active cover plain" data-title="Pertemuan 2">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -733,6 +787,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <p>Slide ini boleh ditampilkan ke siswa. Tekankan bahwa tema kali ini bukan makanan, tetapi produk kreatif yang bisa dibuat dari bahan sederhana.</p>
         <p>Gunakan kata "Mathpreneur" sebagai jembatan: siswa belajar membuat produk sekaligus memakai matematika untuk mengambil keputusan.</p>
         </div></article><article class="slide" data-title="Catatan Guru P2">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -758,6 +817,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
         <p>Gunakan slide ini saat briefing guru atau sebelum siswa masuk. Setelah kelas dimulai, guru dapat langsung lompat ke slide cover atau rundown.</p>
         </div></article><article class="slide" data-title="Rundown Pertemuan 2">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -775,6 +839,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <p>Durasi dibuat kelipatan 5 menit agar mudah dipakai di kelas. Pakai timer visual jika tersedia.</p>
         <p>Jika kelas lebih cepat, tambahkan sesi contoh atau roleplay. Jika kelas lebih lambat, prioritaskan worksheet inti dan tugas rumah.</p>
         </div></article><article class="slide" data-title="Tujuan Pertemuan 2">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -795,6 +864,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
         <p>Guru tidak perlu memakai istilah matematika yang terlalu formal. Sebutkan konsepnya lewat kegiatan: menghitung, membandingkan, membagi rata, dan menentukan selisih.</p>
         </div></article><article class="slide" data-title="Jalur Belajar P2">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -819,6 +893,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
         <p>Slide ini boleh ditampilkan ke siswa. Sampaikan bahwa setiap siswa boleh belajar di level yang sesuai. Untuk guru, gunakan jalur ini untuk membedakan bantuan tanpa membuat siswa merasa tertinggal.</p>
         </div></article><article class="slide" data-title="Recap Pertemuan 1">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -845,6 +924,11 @@ td:first-child, th:first-child { white-space: nowrap; }
             <div class="speaker-note">
             <p>Normal jika siswa mengubah ide. Jelaskan bahwa entrepreneur juga sering memperbaiki rencana setelah mengecek bahan, biaya, dan keamanan.</p>
             </div></article><article class="slide" data-title="Cek Fokus - Update Ide Produk">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -876,6 +960,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
         <p>Biarkan siswa menjawab dulu sebelum membuka pembahasan. Jika banyak yang keliru, ulangi konsep memakai contoh benda nyata di kelas.</p>
         <p><strong>Pembahasan:</strong> Jawaban: B. Ide boleh diperbaiki agar aman, mudah, dan sesuai bahan yang ada.</p></div></article><article class="slide" data-title="Pre Test 2">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -907,6 +996,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <p>Untuk kelas offline, test dapat diprint dari file PDF pada hub. Guru boleh membacakan instruksi, tetapi tidak memberi petunjuk jawaban.</p>
         <p>Pastikan semua siswa mendapat lembar test. Untuk siswa yang belum lancar membaca, bantu bacakan soal tanpa mengarahkan jawabannya. Setelah selesai, simpan hasil test sesuai prosedur cabang.</p>
         </div></article><article class="slide" data-title="Worksheet 4">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -929,6 +1023,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
             <p>Untuk kegiatan craft, bedakan bahan habis pakai dan alat yang bisa dipakai berulang. Gunting biasanya alat bantu, bukan modal per produk, kecuali harus membeli khusus untuk proyek.</p>
             </div></article><article class="slide" data-title="Contoh Budget">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -951,6 +1050,11 @@ td:first-child, th:first-child { white-space: nowrap; }
             <div class="speaker-note">
             <p>Contoh bilangan dibuat sederhana dan mudah dihitung. Guru boleh mengganti nilai harga di papan sesuai kondisi siswa.</p>
             </div></article><article class="slide" data-title="Total Modal">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -977,6 +1081,11 @@ td:first-child, th:first-child { white-space: nowrap; }
             <div class="speaker-note">
             <p>Untuk siswa yang belum kuat uang ribuan, tulis versi sederhana di papan: 12 ribu + 6 ribu + 5 ribu = 23 ribu.</p>
             </div></article><article class="slide" data-title="Cek Fokus - Total Modal">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1008,6 +1117,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
         <p>Biarkan siswa menjawab dulu sebelum membuka pembahasan. Jika banyak yang keliru, ulangi konsep memakai contoh benda nyata di kelas.</p>
         <p><strong>Pembahasan:</strong> Jawaban: B. Rp12.000 + Rp6.000 + Rp5.000 = Rp23.000.</p></div></article><article class="slide" data-title="Worksheet 5">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1030,6 +1144,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
             <p>Tekankan bahwa harga final bukan asal mahal. Harga harus menutup modal, tetapi tetap terasa wajar untuk target pembeli.</p>
             </div></article><article class="slide" data-title="Rumus Pricing">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1051,6 +1170,11 @@ td:first-child, th:first-child { white-space: nowrap; }
             <div class="speaker-note">
             <p>Gunakan simbol bagi yang benar di layar. Untuk siswa SD, boleh sebut "dibagi rata ke semua produk".</p>
             </div></article><article class="slide" data-title="Cek Fokus - Modal per Produk">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1082,6 +1206,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
         <p>Biarkan siswa menjawab dulu sebelum membuka pembahasan. Jika banyak yang keliru, ulangi konsep memakai contoh benda nyata di kelas.</p>
         <p><strong>Pembahasan:</strong> Jawaban: A. Rp24.000 dibagi 6 produk = Rp4.000 per produk.</p></div></article><article class="slide" data-title="Cek Harga">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1097,6 +1226,11 @@ td:first-child, th:first-child { white-space: nowrap; }
             <div class="speaker-note">
             <p>Jika siswa memilih harga tidak realistis, gunakan pertanyaan pemandu. Jangan langsung mengganti harga mereka tanpa diskusi.</p>
             </div></article><article class="slide" data-title="Cek Fokus - Harga Final">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1128,6 +1262,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
         <p>Biarkan siswa menjawab dulu sebelum membuka pembahasan. Jika banyak yang keliru, ulangi konsep memakai contoh benda nyata di kelas.</p>
         <p><strong>Pembahasan:</strong> Jawaban: C. Rp6.000 lebih tinggi dari modal per produk, jadi ada ruang untung.</p></div></article><article class="slide" data-title="Worksheet 6">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1149,6 +1288,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
             <p>Untuk produk craft, kemasan bisa sederhana: plastik bening kecil, kertas lipat, label kecil, atau kartu ucapan mini.</p>
             </div></article><article class="slide" data-title="Packaging">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1178,6 +1322,11 @@ td:first-child, th:first-child { white-space: nowrap; }
             <div class="speaker-note">
             <p>Ingatkan siswa agar kemasan tidak lebih mahal daripada produknya. Kemasan sederhana tetapi rapi sudah cukup.</p>
             </div></article><article class="slide" data-title="Cek Fokus - Label Produk">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1209,6 +1358,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
         <p>Biarkan siswa menjawab dulu sebelum membuka pembahasan. Jika banyak yang keliru, ulangi konsep memakai contoh benda nyata di kelas.</p>
         <p><strong>Pembahasan:</strong> Jawaban: A. Nama produk dan harga membantu pembeli memahami produk dengan cepat.</p></div></article><article class="slide" data-title="Promosi">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1233,6 +1387,11 @@ td:first-child, th:first-child { white-space: nowrap; }
             <div class="speaker-note">
             <p>Jika siswa membuat kalimat terlalu panjang, minta mereka memilih satu keunggulan utama saja.</p>
             </div></article><article class="slide" data-title="Worksheet 7">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1254,6 +1413,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
             <p>Display untuk produk craft biasanya cukup sederhana: nampan, kertas alas, mini stand, atau kotak bekas yang dihias.</p>
             </div></article><article class="slide" data-title="Display Tips">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1282,6 +1446,11 @@ td:first-child, th:first-child { white-space: nowrap; }
             <div class="speaker-note">
             <p>Beri contoh di meja guru jika memungkinkan. Susun satu produk, satu label harga, dan satu kartu brand.</p>
             </div></article><article class="slide" data-title="Cek Fokus - Display Booth">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1313,6 +1482,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
         <p>Biarkan siswa menjawab dulu sebelum membuka pembahasan. Jika banyak yang keliru, ulangi konsep memakai contoh benda nyata di kelas.</p>
         <p><strong>Pembahasan:</strong> Jawaban: B. Produk di tengah dan price tag di dekatnya membuat booth lebih jelas.</p></div></article><article class="slide" data-title="Balik Modal">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1330,6 +1504,11 @@ td:first-child, th:first-child { white-space: nowrap; }
             <div class="speaker-note">
             <p>Gunakan contoh yang habis dibagi agar mudah. Jika siswa siap, beri contoh hasil tidak bulat dan jelaskan pembulatan ke atas.</p>
             </div></article><article class="slide" data-title="Post Test 2">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1361,6 +1540,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <p>Untuk kelas offline, test dapat diprint dari file PDF pada hub. Guru boleh membacakan instruksi, tetapi tidak memberi petunjuk jawaban.</p>
         <p>Pastikan semua siswa mendapat lembar test. Untuk siswa yang belum lancar membaca, bantu bacakan soal tanpa mengarahkan jawabannya. Setelah selesai, simpan hasil test sesuai prosedur cabang.</p>
         </div></article><article class="slide" data-title="Worksheet 0">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1379,6 +1563,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
             <p>Untuk produk craft, tekankan keamanan: gunakan gunting dengan hati-hati, jauhkan beads kecil dari mulut, dan gunakan lem sesuai arahan orang dewasa.</p>
             </div></article><article class="slide" data-title="Closing">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1398,6 +1587,11 @@ td:first-child, th:first-child { white-space: nowrap; }
             <div class="speaker-note">
             <p>Sebelum pulang, ulangi barang yang harus dibawa: produk, label/price tag, catatan modal, alat kecil jika diperlukan, dan worksheet.</p>
             </div></article><article class="slide" data-title="Magic Words P2">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1418,6 +1612,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
         <p>Gunakan nada hangat. Ini membantu siswa mengingat bahwa proses mencoba, menghitung, dan memperbaiki ide adalah bagian dari belajar.</p>
         </div></article><article class="slide" data-title="Apresiasi P2">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
@@ -1432,6 +1631,11 @@ td:first-child, th:first-child { white-space: nowrap; }
         <div class="speaker-note">
         <p>Pilih 1-2 contoh konkret dari kelas, misalnya ide yang kreatif, hitungan yang makin rapi, atau siswa yang berani sharing.</p>
         </div></article><article class="slide" data-title="Reminder Foto Kelas">
+      <div class="hp-deck-bg" aria-hidden="true">
+        <img class="hp-left" src="hp-left-campus.png" alt="">
+        <img class="hp-right" src="hp-right-campus.png" alt="">
+        <img class="hp-kids" src="hp-kids.png" alt="">
+      </div>
       <div class="slide-art" aria-hidden="true">
         <img class="paper" src="icon-paper.png" alt="">
         <img class="sticker" src="icon-sticker.png" alt="">
