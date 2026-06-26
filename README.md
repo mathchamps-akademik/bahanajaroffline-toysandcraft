@@ -11,3 +11,4 @@ Folder ini siap di-upload ke GitHub Pages.
 - Semua gambar dibuat flat di root folder agar tidak gagal load di GitHub Pages.
 - File PDF juga ada di root folder agar tombol PDF Deck, Pre Test, Post Test, dan Kunci Jawaban bisa dibuka seperti bahan ajar F&B.
 - Halaman khusus kumpulan PDF tidak ditampilkan di hub; PDF untuk GDrive tersedia di folder terpisah.
+- Deck sudah ditambah keterangan untuk guru dan siswa: penyesuaian kelas kecil, bantuan hitungan, dan panduan Market Day.
